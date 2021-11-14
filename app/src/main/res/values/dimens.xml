@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="d01">1dip</dimen>
+    <dimen name="d05">5dp</dimen>
+    <dimen name="d08">8dp</dimen>
+    <dimen name="d10">10dip</dimen>
+    <dimen name="d11">11dip</dimen>
+    <dimen name="d12">12dip</dimen>
+    <dimen name="d13">13dip</dimen>
+    <dimen name="d14">14dip</dimen>
+    <dimen name="d15">15dip</dimen>
+    <dimen name="d16">16dip</dimen>
+    <dimen name="d17">17dip</dimen>
+    <dimen name="d18">18dip</dimen>
+    <dimen name="d19">19dip</dimen>
+    <dimen name="d20">20dip</dimen>
+    <dimen name="d21">21dip</dimen>
+    <dimen name="d22">22dip</dimen>
+    <dimen name="d23">23dip</dimen>
+    <dimen name="d24">24dip</dimen>
+    <dimen name="d25">25dip</dimen>
+    <dimen name="d26">26dip</dimen>
+    <dimen name="d27">27dip</dimen>
+    <dimen name="d28">28dip</dimen>
+    <dimen name="d29">29dip</dimen>
+    <dimen name="d30">30dip</dimen>
+    <dimen name="d31">31dip</dimen>
+    <dimen name="d32">32dip</dimen>
+    <dimen name="d33">33dip</dimen>
+    <dimen name="d34">34dip</dimen>
+    <dimen name="d35">35dip</dimen>
+    <dimen name="d36">36dip</dimen>
+    <dimen name="d37">37dip</dimen>
+    <dimen name="d38">38dip</dimen>
+    <dimen name="d39">39dip</dimen>
+</resources>

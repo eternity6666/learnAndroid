@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DemoApp</string>
+    <string name="show_hide_btn">隐藏/收起按钮</string>
+</resources>
