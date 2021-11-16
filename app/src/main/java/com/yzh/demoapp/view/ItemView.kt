@@ -3,20 +3,16 @@ package com.yzh.demoapp.view
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
-import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.Canvas
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.animation.addListener
-import androidx.core.view.updateLayoutParams
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import com.yzh.demoapp.R
+import com.yzh.demoapp.util.AnimUtils
 import com.yzh.demoapp.util.Utils
 
 class ItemView : ConstraintLayout {
@@ -47,10 +43,10 @@ class ItemView : ConstraintLayout {
         mShowBtn.setOnClickListener {
             if(isShow) {
                 isShow = false
-                doHideAnimation();
+                doHideAnimation()
             } else {
                 isShow = true
-                doShowAnimation();
+                doShowAnimation()
             }
         }
     }
@@ -68,21 +64,28 @@ class ItemView : ConstraintLayout {
         mDescriptionView.visibility = View.VISIBLE
         val startHeight = 0
         val endHeight = mDescriptionView.measuredHeight
-        val descriptionAnimator = buildDescriptionAnimator(
-            startHeight, endHeight
+        val descriptionAnimator = AnimUtils.buildHeightAnimator(
+            mDescriptionView,
+            startHeight,
+            endHeight
         )
         descriptionAnimator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
                 mDescriptionView.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             }
         })
-        val showAnimator = buildShowAnimator(startRotation = 0f, endRotation = 180f)
+        val showAnimator = AnimUtils.buildRotationAnimator(
+            mShowBtn,
+            startRotation = 0f,
+            endRotation = 180f
+        )
         doAnimation(descriptionAnimator, showAnimator)
     }
 
     private fun doHideAnimation() {
         mDescriptionView.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        val descriptionAnimator = buildDescriptionAnimator(
+        val descriptionAnimator = AnimUtils.buildHeightAnimator(
+            mDescriptionView,
             startHeight = mDescriptionView.measuredHeight,
             endHeight = 0
         )
@@ -91,7 +94,11 @@ class ItemView : ConstraintLayout {
                 mDescriptionView.visibility = View.GONE
             }
         })
-        val showAnimator = buildShowAnimator(startRotation = 180f, endRotation = 0f)
+        val showAnimator = AnimUtils.buildRotationAnimator(
+            mShowBtn,
+            startRotation = 180f,
+            endRotation = 0f
+        )
         doAnimation(descriptionAnimator, showAnimator)
     }
 
@@ -101,33 +108,6 @@ class ItemView : ConstraintLayout {
             duration = 500
             play(descriptionAnimator).with(showHideBtnAnimator)
             start()
-        }
-    }
-
-    private fun buildDescriptionAnimator(startHeight: Int, endHeight: Int): Animator {
-        Log.d(
-            TAG,
-            " \nshow startHeight = " + startHeight
-                    + "\nshow endHeight = " + endHeight
-        )
-        return ValueAnimator.ofInt(startHeight, endHeight).apply {
-            addUpdateListener {
-                Log.d(
-                    TAG,
-                    " \nshow mDescriptionView.layoutParams.height" + mDescriptionView.layoutParams.height
-                            + "\nshow it.animatedValue" + it.animatedValue
-                )
-                mDescriptionView.layoutParams.height = it.animatedValue as Int
-                mDescriptionView.requestLayout()
-            }
-        }
-    }
-
-    private fun buildShowAnimator(startRotation: Float, endRotation: Float): Animator {
-        return ValueAnimator.ofFloat(startRotation, endRotation).apply {
-            addUpdateListener {
-                mShowBtn.rotation = it.animatedValue as Float
-            }
         }
     }
 

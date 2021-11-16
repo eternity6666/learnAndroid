@@ -33,4 +33,20 @@
     <dimen name="d37">37dip</dimen>
     <dimen name="d38">38dip</dimen>
     <dimen name="d39">39dip</dimen>
+    <dimen name="d40">40dip</dimen>
+    <dimen name="d41">41dip</dimen>
+    <dimen name="d42">42dip</dimen>
+    <dimen name="d43">43dip</dimen>
+    <dimen name="d44">44dip</dimen>
+    <dimen name="d45">45dip</dimen>
+    <dimen name="d46">46dip</dimen>
+    <dimen name="d47">47dip</dimen>
+    <dimen name="d48">48dip</dimen>
+    <dimen name="d49">49dip</dimen>
+    <dimen name="d100">100dip</dimen>
+    <dimen name="d150">150dip</dimen>
+    <dimen name="d200">200dip</dimen>
+    <dimen name="d250">250dip</dimen>
+    <dimen name="d300">300dip</dimen>
+    <dimen name="d350">350dip</dimen>
 </resources>
