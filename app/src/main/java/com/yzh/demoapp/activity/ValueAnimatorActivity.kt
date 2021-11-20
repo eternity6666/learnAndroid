@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.marginTop
 import com.yzh.demoapp.R
@@ -25,8 +26,8 @@ class ValueAnimatorActivity : AppCompatActivity() {
     private lateinit var mTitleView: TextView
     private lateinit var mButton1: TextView
     private lateinit var mButton2: TextView
-    private lateinit var mContainerA: TextView
-    private lateinit var mContainerB: TextView
+    private lateinit var mContainerA: LinearLayout
+    private lateinit var mContainerB: LinearLayout
 
     private var isLongTextStatus = false
     private var status = false
@@ -141,6 +142,7 @@ class ValueAnimatorActivity : AppCompatActivity() {
         )
         containerAHeightAnimator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationStart(animation: Animator?) {
+                containerAHeightAnimator.removeAllListeners()
                 Log.d(TAG, " \nhide animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationStart" + "\nmContainerA.alpha = " + mContainerA.alpha)
             }
 

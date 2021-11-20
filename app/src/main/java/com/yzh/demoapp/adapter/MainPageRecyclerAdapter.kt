@@ -16,7 +16,7 @@ class MainPageRecyclerAdapter(private val dataSet: ArrayList<MainPageItemData>, 
         fun bind(data: MainPageItemData) {
             item.setOnClickListener {
                 val intent = Intent()
-                intent.setClass(it.context, data.clazz)
+                intent.setClass(it.context, data.clazz.java)
                 it.context.startActivity(intent)
             }
             item.setTitle(data.title)

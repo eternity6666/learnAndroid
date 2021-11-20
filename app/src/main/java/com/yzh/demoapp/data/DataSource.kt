@@ -11,14 +11,14 @@ object DataSource {
         dataList.add(
             MainPageItemData(
                 title = "demoActivity",
-                clazz = DemoActivity().javaClass,
+                clazz = DemoActivity::class,
                 description = "description"
             )
         )
         dataList.add(
             MainPageItemData(
                 title = "ValueAnimatorActivity",
-                clazz = ValueAnimatorActivity().javaClass
+                clazz = ValueAnimatorActivity::class
         ))
     }
 

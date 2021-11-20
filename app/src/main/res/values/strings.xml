@@ -2,4 +2,6 @@
     <string name="app_name">DemoApp</string>
     <string name="show_hide_btn">隐藏/收起按钮</string>
     <string name="test_string">阳作华和阳作华的快乐生活</string>
+    <string name="rmb">￥</string>
+    <string name="at">\@</string>
 </resources>
