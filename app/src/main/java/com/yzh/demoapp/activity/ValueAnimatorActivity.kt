@@ -1,11 +1,14 @@
 package com.yzh.demoapp.activity
 
 import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
@@ -74,12 +77,19 @@ class ValueAnimatorActivity : AppCompatActivity() {
     }
 
     private fun doShowAnimation() {
-        val containerBTopMarginAnimator = AnimUtils.buildMarginTopAnimator(
-            mContainerB,
-            startMargin = mContainerB.marginTop,
-            endMargin = DEFAULT_HEIGHT_200
-        )
-        mContainerA.visibility = View.VISIBLE
+        val containerBTopMarginAnimator =
+            ValueAnimator.ofInt(mContainerB.marginTop, DEFAULT_HEIGHT_200).apply {
+                addUpdateListener {
+                    var params = mContainerB.layoutParams
+                    if (mContainerB.layoutParams is ViewGroup.MarginLayoutParams) {
+                        params = mContainerB.layoutParams as ViewGroup.MarginLayoutParams
+                        params.topMargin = it.animatedValue as Int
+                        if (params.topMargin + mContainerB.layoutParams.height > DEFAULT_HEIGHT_200) {
+                            mContainerA.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
         val containerAHeightAnimator = AnimUtils.buildHeightAnimator(
             mContainerA,
             startHeight = mContainerA.layoutParams.height,
@@ -90,23 +100,6 @@ class ValueAnimatorActivity : AppCompatActivity() {
             startAlpha = mContainerA.alpha,
             endAlpha = 1f
         )
-        containerAAlphaAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationStart(animation: Animator?) {
-                Log.d(TAG, " \nshow animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationStart" + "\nmContainerA.alpha = " + mContainerA.alpha)
-            }
-
-            override fun onAnimationEnd(animation: Animator?) {
-                Log.d(TAG, " \nshow animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationEnd" + "\nmContainerA.alpha = " + mContainerA.alpha)
-            }
-
-            override fun onAnimationPause(animation: Animator?) {
-                Log.d(TAG, " \nshow animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationPause" + "\nmContainerA.alpha = " + mContainerA.alpha)
-            }
-
-            override fun onAnimationResume(animation: Animator?) {
-                Log.d(TAG, " \nshow animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationResume" + "\nmContainerA.alpha = " + mContainerA.alpha)
-            }
-        })
         val button1RotateAnimation = AnimUtils.buildRotationAnimator(
             mButton1,
             startRotation = mButton1.rotation,
@@ -141,24 +134,10 @@ class ValueAnimatorActivity : AppCompatActivity() {
             endHeight = 0
         )
         containerAHeightAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationStart(animation: Animator?) {
-                containerAHeightAnimator.removeAllListeners()
-                Log.d(TAG, " \nhide animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationStart" + "\nmContainerA.alpha = " + mContainerA.alpha)
-            }
-
             override fun onAnimationEnd(animation: Animator?) {
-                Log.d(TAG, " \nhide animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationEnd" + "\nmContainerA.alpha = " + mContainerA.alpha)
                 if (mContainerA.alpha == 0f) {
                     mContainerA.visibility = View.GONE
                 }
-            }
-
-            override fun onAnimationPause(animation: Animator?) {
-                Log.d(TAG, " \nhide animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationPause" + "\nmContainerA.alpha = " + mContainerA.alpha)
-            }
-
-            override fun onAnimationResume(animation: Animator?) {
-                Log.d(TAG, " \nhide animation.hashCode=" + animation.hashCode() + "\n调用了onAnimationResume" + "\nmContainerA.alpha = " + mContainerA.alpha)
             }
         })
         val containerAAlphaAnimator = AnimUtils.buildAlphaAnimator(
