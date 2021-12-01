@@ -18,11 +18,13 @@ object DataSource {
         dataList.add(
             MainPageItemData(
                 title = "ValueAnimatorActivity",
-                clazz = ValueAnimatorActivity::class
-        ))
+                clazz = ValueAnimatorActivity::class,
+                description = "解决协调布局中复杂动画的demo"
+            )
+        )
     }
 
-    fun getMainPageList() : ArrayList<MainPageItemData> {
+    fun getMainPageList(): ArrayList<MainPageItemData> {
         return dataList
     }
 }

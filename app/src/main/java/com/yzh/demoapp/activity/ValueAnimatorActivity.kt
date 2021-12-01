@@ -1,22 +1,19 @@
 package com.yzh.demoapp.activity
 
 import android.animation.Animator
-import android.animation.Animator.AnimatorListener
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginTop
 import com.yzh.demoapp.R
 import com.yzh.demoapp.util.AnimUtils
-import kotlin.collections.ArrayList
 
 class ValueAnimatorActivity : AppCompatActivity() {
 
@@ -80,11 +77,10 @@ class ValueAnimatorActivity : AppCompatActivity() {
         val containerBTopMarginAnimator =
             ValueAnimator.ofInt(mContainerB.marginTop, DEFAULT_HEIGHT_200).apply {
                 addUpdateListener {
-                    var params = mContainerB.layoutParams
                     if (mContainerB.layoutParams is ViewGroup.MarginLayoutParams) {
-                        params = mContainerB.layoutParams as ViewGroup.MarginLayoutParams
+                        val params = mContainerB.layoutParams as ViewGroup.MarginLayoutParams
                         params.topMargin = it.animatedValue as Int
-                        if (params.topMargin + mContainerB.layoutParams.height > DEFAULT_HEIGHT_200) {
+                        if (params.topMargin + mContainerB.height > DEFAULT_HEIGHT_200) {
                             mContainerA.visibility = View.VISIBLE
                         }
                     }
@@ -174,5 +170,6 @@ class ValueAnimatorActivity : AppCompatActivity() {
         } else {
             mContainerB.layoutParams.height = DEFAULT_HEIGHT_100
         }
+
     }
 }
