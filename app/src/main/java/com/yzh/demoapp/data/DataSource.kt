@@ -1,5 +1,6 @@
 package com.yzh.demoapp.data
 
+import com.yzh.demoapp.calculator.CalculatorActivity
 import com.yzh.demoapp.activity.DemoActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
 
@@ -20,6 +21,12 @@ object DataSource {
                 title = "ValueAnimatorActivity",
                 clazz = ValueAnimatorActivity::class,
                 description = "解决协调布局中复杂动画的demo"
+            )
+        )
+        dataList.add(
+            MainPageItemData(
+                title = "计算器",
+                clazz = CalculatorActivity::class
             )
         )
     }

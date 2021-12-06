@@ -16,6 +16,9 @@
             android:name=".activity.DemoActivity"
             android:exported="true" />
         <activity
+            android:name="com.yzh.demoapp.calculator.CalculatorActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

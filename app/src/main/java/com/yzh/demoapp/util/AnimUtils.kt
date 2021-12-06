@@ -37,9 +37,8 @@ object AnimUtils {
     fun buildMarginTopAnimator(targetView: View, startMargin: Int, endMargin: Int): Animator {
         return ValueAnimator.ofInt(startMargin, endMargin).apply {
             addUpdateListener {
-                var params = targetView.layoutParams
                 if (targetView.layoutParams is ViewGroup.MarginLayoutParams) {
-                    params = targetView.layoutParams as ViewGroup.MarginLayoutParams
+                    val params = targetView.layoutParams as ViewGroup.MarginLayoutParams
                     params.topMargin = it.animatedValue as Int
                 }
             }
