@@ -10,6 +10,10 @@
         <entry key="app/src/main/res/layout/view_item.xml" value="0.575323207867769" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21197916666666666" />
+        <entry key="program/calculator/src/main/res/layout/activity_calculator.xml" value="0.31197916666666664" />
+        <entry key="program/calculator/src/main/res/layout/blank_fragment.xml" value="0.31197916666666664" />
+        <entry key="program/calculator/src/main/res/layout/fragment_calculator.xml" value="0.29791666666666666" />
+        <entry key="program/calculator/src/main/res/layout/fragment_scrolling.xml" value="0.29791666666666666" />
       </map>
     </option>
   </component>
