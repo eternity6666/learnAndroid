@@ -1,8 +1,9 @@
 package com.yzh.demoapp.data
 
-import com.yzh.demoapp.calculator.CalculatorActivity
+import com.yzh.demo.recycler_view.RecyclerViewActivity
 import com.yzh.demoapp.activity.DemoActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
+import com.yzh.demoapp.calculator.CalculatorActivity
 
 object DataSource {
 
@@ -27,6 +28,13 @@ object DataSource {
             MainPageItemData(
                 title = "计算器",
                 clazz = CalculatorActivity::class
+            )
+        )
+        dataList.add(
+            MainPageItemData(
+                title = "RecyclerView",
+                clazz = RecyclerViewActivity::class,
+                description = "验证RecyclerView的demo"
             )
         )
     }

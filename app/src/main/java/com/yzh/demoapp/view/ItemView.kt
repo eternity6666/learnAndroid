@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import com.google.android.material.card.MaterialCardView
 import com.yzh.demoapp.R
 import com.yzh.demoapp.util.AnimUtils
 import com.yzh.demoapp.util.StringUtils
@@ -19,7 +19,7 @@ class ItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr) {
+) : MaterialCardView(context, attrs, defStyleAttr) {
 
     private lateinit var mTitleView: TextView
     private lateinit var mDescriptionView: TextView
@@ -47,12 +47,14 @@ class ItemView @JvmOverloads constructor(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            lp.setMargins(32, 10, 32, 10)
+            lp.setMargins(32, 10, 32, 15)
             layoutParams = lp
         }
         mTitleView = findViewById(R.id.item_view_title)
         mDescriptionView = findViewById(R.id.item_view_description)
         mShowBtn = findViewById(R.id.item_view_show_btn)
+        radius = 30f
+        cardElevation = 20f
     }
 
     private fun doShowAnimation() {

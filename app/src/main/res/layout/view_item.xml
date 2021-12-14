@@ -6,13 +6,13 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/d16"
     android:layout_marginVertical="@dimen/d08"
-    tools:parentTag="androidx.cardview.widget.CardView">
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/d10"
-        android:paddingVertical="@dimen/d10">
+        android:paddingHorizontal="@dimen/d15"
+        android:paddingVertical="@dimen/d15">
 
         <TextView
             android:id="@+id/item_view_title"
