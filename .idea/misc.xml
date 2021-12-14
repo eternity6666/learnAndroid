@@ -4,12 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.36203703703703705" />
-        <entry key="app/src/main/res/layout/activity_demo.xml" value="0.3880208333333333" />
+        <entry key="app/src/main/res/layout/activity_demo.xml" value="0.34834123222748814" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_value_animator.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_item.xml" value="0.575323207867769" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21197916666666666" />
+        <entry key="demo/card-view/src/main/res/layout/activity_card_view.xml" value="0.31197916666666664" />
         <entry key="program/calculator/src/main/res/layout/activity_calculator.xml" value="0.31197916666666664" />
         <entry key="program/calculator/src/main/res/layout/blank_fragment.xml" value="0.31197916666666664" />
         <entry key="program/calculator/src/main/res/layout/fragment_calculator.xml" value="0.29791666666666666" />

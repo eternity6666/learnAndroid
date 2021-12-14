@@ -9,3 +9,6 @@ rootProject.name = "DemoApp"
 include ':app'
 include ':program'
 include ':program:calculator'
+include ':demo'
+include ':demo:custom-view'
+include ':demo:card-view'

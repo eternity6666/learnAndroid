@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yzh.demo.card_view">
+
+    <application>
+        <activity
+            android:name=".CardViewActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

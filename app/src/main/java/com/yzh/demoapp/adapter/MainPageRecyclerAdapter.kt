@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yzh.demoapp.data.MainPageItemData
 import com.yzh.demoapp.view.ItemView
 
-class MainPageRecyclerAdapter(private val dataSet: ArrayList<MainPageItemData>, private val context: Context) : RecyclerView.Adapter<MainPageRecyclerAdapter.ViewHolder>() {
+class MainPageRecyclerAdapter(
+    private val dataSet: ArrayList<MainPageItemData>,
+    private val context: Context
+) : RecyclerView.Adapter<MainPageRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(view: ItemView) : RecyclerView.ViewHolder(view) {
 

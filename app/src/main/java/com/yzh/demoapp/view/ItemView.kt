@@ -9,14 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.cardview.widget.CardView
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import com.yzh.demoapp.R
 import com.yzh.demoapp.util.AnimUtils
 import com.yzh.demoapp.util.Utils
 
-class ItemView : ConstraintLayout {
-    private val TAG: String = "ItemView"
+class ItemView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : CardView(context, attrs, defStyleAttr) {
 
     private lateinit var mTitleView: TextView
     private lateinit var mDescriptionView: TextView
@@ -24,24 +27,10 @@ class ItemView : ConstraintLayout {
 
     private var isShow: Boolean = false
 
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(
-        context,
-        attrs,
-        defStyleAttr,
-        0,
-    )
-
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
+    init {
         initViews()
         mShowBtn.setOnClickListener {
-            if(isShow) {
+            if (isShow) {
                 isShow = false
                 doHideAnimation()
             } else {
@@ -53,13 +42,24 @@ class ItemView : ConstraintLayout {
 
     private fun initViews() {
         inflate(context, R.layout.view_item, this)
+        if (layoutParams == null) {
+            val lp = MarginLayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            lp.setMargins(32, 10, 32, 10)
+            layoutParams = lp
+        }
         mTitleView = findViewById(R.id.item_view_title)
         mDescriptionView = findViewById(R.id.item_view_description)
         mShowBtn = findViewById(R.id.item_view_show_btn)
     }
 
     private fun doShowAnimation() {
-        mDescriptionView.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        mDescriptionView.measure(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         mDescriptionView.layoutParams.height = 0
         mDescriptionView.visibility = View.VISIBLE
         val startHeight = 0
@@ -83,7 +83,10 @@ class ItemView : ConstraintLayout {
     }
 
     private fun doHideAnimation() {
-        mDescriptionView.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        mDescriptionView.measure(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         val descriptionAnimator = AnimUtils.buildHeightAnimator(
             mDescriptionView,
             startHeight = mDescriptionView.measuredHeight,
@@ -122,6 +125,10 @@ class ItemView : ConstraintLayout {
         }
         mDescriptionView.text = description
         mShowBtn.visibility = View.VISIBLE
+    }
+
+    companion object {
+        private const val TAG: String = "ItemView"
     }
 
 }

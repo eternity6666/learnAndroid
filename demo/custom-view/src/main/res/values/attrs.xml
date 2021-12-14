@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="text" format="string" />
+        <attr name="shape">
+            <enum name="rectangle" value="0" />
+            <enum name="circle" value="1" />
+            <enum name="five_star" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
