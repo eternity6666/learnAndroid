@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import com.yzh.demoapp.R
 import com.yzh.demoapp.util.AnimUtils
-import com.yzh.demoapp.util.Utils
+import com.yzh.demoapp.util.StringUtils
 
 class ItemView @JvmOverloads constructor(
     context: Context,
@@ -119,7 +119,7 @@ class ItemView @JvmOverloads constructor(
     }
 
     fun setDescriptionText(description: String) {
-        if (Utils.isEmpty(description)) {
+        if (StringUtils.isEmpty(description)) {
             mShowBtn.visibility = View.GONE
             return
         }
