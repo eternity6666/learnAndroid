@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoApp">
         <activity
+            android:name=".activity.GradientDrawableActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ValueAnimatorActivity"
             android:exported="true" />
         <activity
             android:name=".activity.DemoActivity"
             android:exported="true" />
         <activity
-            android:name="com.yzh.demoapp.calculator.CalculatorActivity"
+            android:name=".calculator.CalculatorActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

@@ -2,6 +2,7 @@ package com.yzh.demoapp.data
 
 import com.yzh.demo.recycler_view.RecyclerViewActivity
 import com.yzh.demoapp.activity.DemoActivity
+import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
 
@@ -35,6 +36,12 @@ object DataSource {
                 title = "RecyclerView",
                 clazz = RecyclerViewActivity::class,
                 description = "验证RecyclerView的demo"
+            )
+        )
+        dataList.add(
+            MainPageItemData(
+                title = "GradientDrawableActivity",
+                clazz = GradientDrawableActivity::class
             )
         )
     }
