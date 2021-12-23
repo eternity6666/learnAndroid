@@ -13,12 +13,12 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/d16"
         android:layout_marginStart="@dimen/d04"
-        android:alpha="0.12"
         android:background="@drawable/bg_shape_right_r_20"
         app:layout_constraintBottom_toBottomOf="@+id/icon"
         app:layout_constraintEnd_toEndOf="@+id/text"
         app:layout_constraintStart_toStartOf="@+id/icon"
-        app:layout_constraintTop_toTopOf="@id/icon" />
+        app:layout_constraintTop_toTopOf="@+id/icon"
+        tools:alpha="0.12" />
 
     <ImageView
         android:id="@+id/icon"
@@ -33,14 +33,19 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/d04"
         android:ellipsize="end"
+        android:gravity="center_vertical|start"
         android:maxLines="1"
+        android:paddingStart="0dp"
         android:paddingEnd="@dimen/d10"
         android:textFontWeight="600"
         android:textSize="@dimen/d10"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="@+id/icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintTop_toTopOf="@+id/icon"
         tools:text="阳作华yyds" />

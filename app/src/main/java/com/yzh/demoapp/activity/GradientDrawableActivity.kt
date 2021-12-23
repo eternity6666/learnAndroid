@@ -13,38 +13,50 @@ class GradientDrawableActivity : AppCompatActivity() {
 
     private var index = 0
     private lateinit var mBgView: View
-    private lateinit var mButton: Button
-    private lateinit var mText: TextView
+    private lateinit var mButtonView: Button
+    private lateinit var mTextView: TextView
     private val colorList = listOf(
-        ColorData("红色", Color.RED),
+        ColorData(
+            "超长的内容超长的内容超长的内容超长的内容超长的内容超长的内容超长的内容超长的内容超长的内容",
+            0xffff6022u.toInt(),
+            0x1eff6022u.toInt()
+        ),
+        ColorData("红色", Color.RED, 0x1eff0000u.toInt()),
         ColorData("绿色", Color.GREEN),
         ColorData("蓝色", Color.BLUE),
         ColorData("黄色", Color.YELLOW),
-        ColorData("企业认证", 0xff0098ffu.toInt()),
-        ColorData("机构认证", 0xff38c000u.toInt()),
-        ColorData("个人认证", 0xffff6022u.toInt())
+        ColorData("企业认证", 0xff0098ffu.toInt(), 0x1e0098ffu.toInt()),
+        ColorData("机构认证", 0xff38c000u.toInt(), 0x1e38c000u.toInt()),
+        ColorData("个人认证", 0xffff6022u.toInt(), 0x1eff6022u.toInt())
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gradient_drawable)
         mBgView = findViewById(R.id.bg_view)
-        mButton = findViewById(R.id.button)
-        mText = findViewById(R.id.text)
+        mButtonView = findViewById(R.id.button)
+        mTextView = findViewById(R.id.text)
         changeColor()
-        mButton.setOnClickListener {
+        mButtonView.setOnClickListener {
             changeColor()
         }
     }
 
     private fun changeColor() {
-        val shape = mBgView.background as GradientDrawable
-        shape.setColor(colorList[index].color)
-        mText.setTextColor(colorList[index].color)
-        mText.text = colorList[index].colorName
+        if (mBgView.background is GradientDrawable) {
+            val shape = mBgView.background as GradientDrawable
+            shape.setColor(colorList[index].backgroundColor)
+        }
+        mTextView.setTextColor(colorList[index].color)
+        mTextView.text = colorList[index].colorName
         index = (index + 1) % colorList.size
-        mButton.text = colorList[index].colorName
+        mButtonView.text = colorList[index].colorName
     }
 
-    data class ColorData(val colorName: String, val color: Int)
+    data class ColorData @JvmOverloads constructor(
+        val colorName: String,
+        val color: Int,
+        val backgroundColor: Int = 0
+    )
+
 }
