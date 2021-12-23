@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk android_config.compileSdk
 
     defaultConfig {
         applicationId "com.yzh.demoapp"
-        minSdk 21
-        targetSdk 31
+        minSdk android_config.minSdk
+        targetSdk android_config.targetSdk
         versionCode 1
         versionName "1.0"
 
