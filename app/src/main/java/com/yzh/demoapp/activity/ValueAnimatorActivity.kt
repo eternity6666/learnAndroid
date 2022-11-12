@@ -130,7 +130,7 @@ class ValueAnimatorActivity : AppCompatActivity() {
             endHeight = 0
         )
         containerAHeightAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 if (mContainerA.alpha == 0f) {
                     mContainerA.visibility = View.GONE
                 }

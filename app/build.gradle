@@ -22,6 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        compose true
+        viewBinding true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -29,21 +36,42 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.yzh.demoapp'
 }
 
 dependencies {
 
     implementation build_deps.androidxAppCompat
-    implementation build_deps.supportDesign
     implementation build_deps.androidxConstraintLayout
-    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation build_deps.androidCompose
+    implementation build_deps.composeUI
+    implementation build_deps.composeUIUnit
+    implementation build_deps.composeMaterial
+    implementation build_deps.kotlinStdlibJdk7
+    implementation build_deps.materialDesign
+    implementation build_deps.kotlinCore
+    implementation build_deps.flexboxlayout
+    implementation build_deps.recyclerview
+    implementation build_deps.navigationCompose
+    implementation build_deps.okhttp
+    implementation build_deps.retrofit
+    implementation build_deps.converterGson
+    implementation build_deps.navigationCompose
 
+    implementation project(path: ':data')
     implementation project(path: ':program:calculator')
     implementation project(path: ':demo:custom-view')
     implementation project(path: ':demo:card-view')
     implementation project(path: ':demo:recycler_view')
+    implementation project(path: ':base:extension')
 
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation build_deps.junit
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation build_deps.composeUiTestJunit4
+
+    debugImplementation build_deps.composeUiTooling
+    debugImplementation build_deps.composeUiToolingPreview
+    debugImplementation 'androidx.compose.ui:ui-tooling:1.2.1'
 }

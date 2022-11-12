@@ -1,9 +1,10 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
+    namespace 'com.yzh.base.extension'
     compileSdk android_config.compileSdk
 
     defaultConfig {
@@ -11,6 +12,7 @@ android {
         targetSdk android_config.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -26,21 +28,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.yzh.demoapp.calculator'
 }
 
 dependencies {
 
+    implementation build_deps.kotlinCore
     implementation build_deps.androidxAppCompat
     implementation build_deps.materialDesign
-    implementation build_deps.androidxConstraintLayout
 
-    implementation build_deps.kotlinCore
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation 'androidx.preference:preference-ktx:1.1.1'
+    testImplementation 'junit:junit:4.13.2'
 
-    testImplementation build_deps.junit
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

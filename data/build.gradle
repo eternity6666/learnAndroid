@@ -4,13 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk android_config.compileSdk
 
     defaultConfig {
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        minSdk android_config.minSdk
+        targetSdk android_config.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -29,6 +27,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.yzh.demo.data'
 }
 
 dependencies {

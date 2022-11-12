@@ -72,7 +72,7 @@ class ItemView @JvmOverloads constructor(
             endHeight
         )
         descriptionAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 mDescriptionView.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             }
         })
@@ -95,7 +95,7 @@ class ItemView @JvmOverloads constructor(
             endHeight = 0
         )
         descriptionAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 mDescriptionView.visibility = View.GONE
             }
         })

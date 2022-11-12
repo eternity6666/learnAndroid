@@ -16,9 +16,6 @@ class MainActivity : AppCompatActivity() {
         val dataList = DataSource.getMainPageList()
         val recyclerView: RecyclerView = findViewById(R.id.item_list)
         recyclerView.adapter = MainPageRecyclerAdapter(dataList, this)
-        val intent = Intent()
-        intent.setClass(this, GradientDrawableActivity::class.java)
-        //   startActivity(intent)
     }
 
 }
