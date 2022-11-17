@@ -24,7 +24,7 @@ import com.yzh.demo.mockdata.randomString
 @Composable
 fun LazyStaggeredLayout() {
     LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Fixed(3),
+        columns = StaggeredGridCells.Adaptive(90.dp),
         contentPadding = PaddingValues(2.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
