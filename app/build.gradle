@@ -52,11 +52,12 @@ dependencies {
     implementation build_deps.kotlinCore
     implementation build_deps.flexboxlayout
     implementation build_deps.recyclerview
-    implementation build_deps.navigationCompose
     implementation build_deps.okhttp
     implementation build_deps.retrofit
     implementation build_deps.converterGson
     implementation build_deps.navigationCompose
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation 'androidx.compose.foundation:foundation'
 
     implementation project(path: ':data')
     implementation project(path: ':program:calculator')
