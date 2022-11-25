@@ -3,6 +3,7 @@ package com.yzh.demoapp.data
 import com.yzh.demo.recycler_view.RecyclerViewActivity
 import com.yzh.demoapp.activity.DemoActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
+import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
 
@@ -11,6 +12,13 @@ object DataSource {
     private val dataList: ArrayList<MainPageItemData> = ArrayList()
 
     init {
+        dataList.add(
+            MainPageItemData(
+                title = "设备方向",
+                clazz = OrientationActivity::class,
+                description = "设备方向",
+            )
+        )
         dataList.add(
             MainPageItemData(
                 title = "demoActivity",

@@ -1,10 +1,8 @@
 package com.yzh.demoapp
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.adapter.MainPageRecyclerAdapter
 import com.yzh.demoapp.data.DataSource
 
