@@ -15,7 +15,7 @@
             android:name=".activity.ValueAnimatorActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.DemoActivity"
+            android:name=".activity.CustomViewActivity"
             android:exported="true" />
         <activity
             android:name=".calculator.CalculatorActivity"

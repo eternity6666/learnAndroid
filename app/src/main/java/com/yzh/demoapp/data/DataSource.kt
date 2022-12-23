@@ -1,7 +1,7 @@
 package com.yzh.demoapp.data
 
 import com.yzh.demo.recycler_view.RecyclerViewActivity
-import com.yzh.demoapp.activity.DemoActivity
+import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
@@ -21,9 +21,9 @@ object DataSource {
         )
         dataList.add(
             MainPageItemData(
-                title = "demoActivity",
-                clazz = DemoActivity::class,
-                description = "description"
+                title = "CustomView",
+                clazz = CustomViewActivity::class,
+                description = "自定义 view"
             )
         )
         dataList.add(
