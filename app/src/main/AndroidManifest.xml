@@ -19,7 +19,8 @@
             android:exported="true" />
         <activity
             android:name=".calculator.CalculatorActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="behind" />
         <activity
             android:name=".activity.OrientationActivity"
             android:configChanges="orientation|screenSize"
