@@ -7,14 +7,26 @@
     tools:context=".activity.CustomViewActivity">
 
     <com.yzh.demo.custom_view.CustomView
-        android:layout_width="@dimen/d300"
-        android:layout_height="@dimen/d300"
+        android:id="@+id/custom_view"
+        android:layout_width="@dimen/d100"
+        android:layout_height="@dimen/d100"
         android:gravity="center"
         android:text="@string/test_string"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="@dimen/d100"
         app:shape="five_star" />
+
+    <com.yzh.demo.custom_view.LayerOverlayView
+        android:id="@+id/layer_overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/test_string"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
