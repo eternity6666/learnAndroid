@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,25 +8,11 @@
 
     <com.yzh.demo.custom_view.CustomView
         android:id="@+id/custom_view"
-        android:layout_width="@dimen/d100"
-        android:layout_height="@dimen/d100"
-        android:gravity="center"
+        android:layout_width="@dimen/d80"
+        android:layout_height="@dimen/d80"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/d20"
         android:text="@string/test_string"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/d100"
         app:shape="five_star" />
 
-    <com.yzh.demo.custom_view.LayerOverlayView
-        android:id="@+id/layer_overlay_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/test_string"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

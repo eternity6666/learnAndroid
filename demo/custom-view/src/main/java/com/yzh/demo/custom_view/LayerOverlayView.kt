@@ -45,7 +45,7 @@ class LayerOverlayView @JvmOverloads constructor(
     fun updateTargetArea(targetArea: Triple<Float, Float, Float>) {
         Log.i(TAG, targetArea.toString())
         this.targetArea = targetArea
-        invalidate()
+        requestLayout()
     }
 
     override fun onDraw(canvas: Canvas?) {
