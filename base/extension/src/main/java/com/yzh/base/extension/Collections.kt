@@ -1,6 +1,3 @@
-/*
- * CopyRight (C) 2022 Tencent. All rights reserved.
- */
 package com.yzh.base.extension
 
 import java.util.*

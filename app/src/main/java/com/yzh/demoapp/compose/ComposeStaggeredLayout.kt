@@ -1,6 +1,3 @@
-/*
- * CopyRight (C) 2022 Tencent. All rights reserved.
- */
 package com.yzh.demoapp.compose
 
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -9,7 +6,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
 import androidx.compose.material.Card
 import androidx.compose.material.Text
