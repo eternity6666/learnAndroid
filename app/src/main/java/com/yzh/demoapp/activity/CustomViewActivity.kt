@@ -24,7 +24,7 @@ class CustomViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_view)
-        customView.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+        customView.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             updateTargetArea()
         }
         Handler(Looper.getMainLooper()).post {
