@@ -28,7 +28,7 @@ class CustomViewActivity : AppCompatActivity() {
             updateTargetArea()
         }
         Handler(Looper.getMainLooper()).post {
-            Log.i("baronyang", "onCreate")
+            Log.i("eternity6666", "onCreate")
             val rootView = findViewById<ViewGroup>(android.R.id.content)
             rootView.addView(
                 layerOverlayView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
