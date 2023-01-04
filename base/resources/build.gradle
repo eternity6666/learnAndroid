@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.yzh.base.resources'
-    compileSdk 33
+    compileSdk android_config.compileSdk
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk android_config.minSdk
+        targetSdk android_config.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

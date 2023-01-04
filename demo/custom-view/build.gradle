@@ -35,7 +35,9 @@ dependencies {
     implementation build_deps.kotlinCore
     implementation build_deps.androidxAppCompat
     implementation build_deps.materialDesign
-    implementation(":base:resources")
+
+    implementation project(path: ':base:resources')
+
     testImplementation build_deps.junit
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
