@@ -21,7 +21,7 @@ import androidx.core.graphics.drawable.toBitmap
 import kotlin.math.pow
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2022/12/29 16:16
  */
 class LayerOverlayView @JvmOverloads constructor(
@@ -120,6 +120,6 @@ class LayerOverlayView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val TAG = "baronyang"
+        private const val TAG = "eternity6666"
     }
 }

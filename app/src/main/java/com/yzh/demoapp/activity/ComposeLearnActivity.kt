@@ -44,7 +44,7 @@ import com.yzh.demoapp.data.DataSource
 import com.yzh.demoapp.data.MainPageItemData
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2022/6/12 16:16
  */
 class ComposeLearnActivity : ComponentActivity() {

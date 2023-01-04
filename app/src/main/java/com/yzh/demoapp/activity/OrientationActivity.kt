@@ -20,7 +20,7 @@ import com.yzh.demoapp.R
 import com.yzh.demoapp.activity.OrientationActivity.Orientation.Companion.isParallel
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2022/11/24 16:16
  */
 class OrientationActivity : AppCompatActivity() {
@@ -163,7 +163,7 @@ class OrientationActivity : AppCompatActivity() {
     @SuppressLint("LongLogTag")
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        Log.i("[baronyang][$TAG]", "newConfig = ${newConfig.orientation}")
+        Log.i("[eternity6666][$TAG]", "newConfig = ${newConfig.orientation}")
 //        updateSensorMode(Orientation.match(newConfig.orientation))
     }
 

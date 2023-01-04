@@ -30,7 +30,7 @@ import kotlinx.coroutines.delay
 import kotlin.math.cos
 import kotlin.math.sin
 
-const val TAG = "baronyang"
+const val TAG = "eternity6666"
 
 data class Point(
     val x: Float = 0f,

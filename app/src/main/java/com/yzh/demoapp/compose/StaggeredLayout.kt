@@ -28,7 +28,7 @@ import com.yzh.demo.mockdata.randomString
 import kotlin.math.max
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2022/9/26 16:16
  */
 @Composable
