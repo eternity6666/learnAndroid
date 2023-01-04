@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    compileSdk android_config.compileSdk
+    namespace 'com.yzh.base.resources'
+    compileSdk 33
 
     defaultConfig {
-        minSdk android_config.minSdk
-        targetSdk android_config.targetSdk
+        minSdk 24
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -27,7 +28,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.yzh.demo.custom_view'
 }
 
 dependencies {
@@ -35,7 +35,6 @@ dependencies {
     implementation build_deps.kotlinCore
     implementation build_deps.androidxAppCompat
     implementation build_deps.materialDesign
-    implementation(":base:resources")
     testImplementation build_deps.junit
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

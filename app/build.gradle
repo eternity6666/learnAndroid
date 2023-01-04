@@ -65,14 +65,15 @@ dependencies {
     implementation project(path: ':demo:card-view')
     implementation project(path: ':demo:recycler_view')
     implementation project(path: ':base:extension')
+    implementation project(path: ':base:resources')
 
     testImplementation build_deps.junit
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation build_deps.composeUiTestJunit4
 
     debugImplementation build_deps.composeUiTooling
     debugImplementation build_deps.composeUiToolingPreview
-    debugImplementation 'androidx.compose.ui:ui-tooling:1.2.1'
+    debugImplementation 'androidx.compose.ui:ui-tooling:1.3.2'
 }

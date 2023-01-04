@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="d01">1dip</dimen>
+    <dimen name="d02">2dip</dimen>
     <dimen name="d04">5dp</dimen>
     <dimen name="d05">5dp</dimen>
     <dimen name="d08">8dp</dimen>
@@ -44,8 +45,15 @@
     <dimen name="d47">47dip</dimen>
     <dimen name="d48">48dip</dimen>
     <dimen name="d49">49dip</dimen>
+    <dimen name="d52">52dip</dimen>
+    <dimen name="d54">54dip</dimen>
+    <dimen name="d61">61dip</dimen>
+    <dimen name="d64">64dip</dimen>
+    <dimen name="d81">81dip</dimen>
     <dimen name="d100">100dip</dimen>
+    <dimen name="d114">114dip</dimen>
     <dimen name="d150">150dip</dimen>
+    <dimen name="d162">162dip</dimen>
     <dimen name="d200">200dip</dimen>
     <dimen name="d250">250dip</dimen>
     <dimen name="d300">300dip</dimen>
