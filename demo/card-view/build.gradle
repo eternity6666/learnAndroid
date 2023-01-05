@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk android_config.compileSdk
+    compileSdkVersion android_config.compileSdk
 
     defaultConfig {
-        minSdk android_config.minSdk
-        targetSdk android_config.targetSdk
+        minSdkVersion android_config.minSdk
+        targetSdkVersion android_config.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,7 +28,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.yzh.demo.card_view'
 }
 
 dependencies {

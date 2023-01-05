@@ -4,12 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.yzh.base.extension'
-    compileSdk android_config.compileSdk
+    compileSdkVersion android_config.compileSdk
 
     defaultConfig {
-        minSdk android_config.minSdk
-        targetSdk android_config.targetSdk
+        minSdkVersion android_config.minSdk
+        targetSdkVersion android_config.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
