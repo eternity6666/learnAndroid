@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="d00">0dip</dimen>
     <dimen name="d01">1dip</dimen>
     <dimen name="d02">2dip</dimen>
-    <dimen name="d04">5dp</dimen>
-    <dimen name="d05">5dp</dimen>
-    <dimen name="d08">8dp</dimen>
+    <dimen name="d03">3dip</dimen>
+    <dimen name="d04">4dip</dimen>
+    <dimen name="d05">5dip</dimen>
+    <dimen name="d06">6dip</dimen>
+    <dimen name="d07">7dip</dimen>
+    <dimen name="d08">8dip</dimen>
+    <dimen name="d09">9dip</dimen>
     <dimen name="d10">10dip</dimen>
     <dimen name="d11">11dip</dimen>
     <dimen name="d12">12dip</dimen>
@@ -45,10 +50,19 @@
     <dimen name="d47">47dip</dimen>
     <dimen name="d48">48dip</dimen>
     <dimen name="d49">49dip</dimen>
+    <dimen name="d50">50dip</dimen>
+    <dimen name="d51">51dip</dimen>
     <dimen name="d52">52dip</dimen>
+    <dimen name="d53">53dip</dimen>
     <dimen name="d54">54dip</dimen>
+    <dimen name="d55">55dip</dimen>
+    <dimen name="d56">56dip</dimen>
+    <dimen name="d57">57dip</dimen>
+    <dimen name="d58">58dip</dimen>
+    <dimen name="d59">59dip</dimen>
     <dimen name="d61">61dip</dimen>
     <dimen name="d64">64dip</dimen>
+    <dimen name="d80">80dip</dimen>
     <dimen name="d81">81dip</dimen>
     <dimen name="d100">100dip</dimen>
     <dimen name="d114">114dip</dimen>
