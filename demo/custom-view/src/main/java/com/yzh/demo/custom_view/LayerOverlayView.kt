@@ -1,20 +1,23 @@
 package com.yzh.demo.custom_view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
-import android.graphics.drawable.ColorDrawable
+import android.graphics.Typeface
 import android.os.Build
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
+import com.yzh.base.extension.color
+import com.yzh.base.extension.drawable
 import kotlin.math.pow
 
 /**
@@ -28,7 +31,9 @@ class LayerOverlayView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : View(context, attrs, defStyleAttr, defStyleRes) {
     private val paint1 by lazy {
-        Paint()
+        Paint().apply {
+            isAntiAlias = true
+        }
     }
     private val textPaint1 by lazy {
         TextPaint().apply {
@@ -36,17 +41,19 @@ class LayerOverlayView @JvmOverloads constructor(
             color = Color.WHITE
             bgColor = Color.RED
             textAlign = Paint.Align.CENTER
-        }
-    }
-    private val drawable1 by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            ColorDrawable(Color.argb(0.8f, 0f, 0f, 0f))
-        } else {
-            ColorDrawable(Color.rgb(0, 0, 0))
+            isAntiAlias = true
+            typeface = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+            } else {
+                Typeface.create(Typeface.SANS_SERIF, 500, false)
+            }
         }
     }
     private val clearMode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
     private var targetArea: Triple<Float, Float, Float>? = null
+    private val text: String = getNeedShownText()
+    private var targetAreaClickCallback: () -> Unit = {}
+    private var notTargetAreaClickCallback: () -> Unit = {}
 
     fun updateTargetArea(targetArea: Triple<Float, Float, Float>) {
         Log.i(TAG, targetArea.toString())
@@ -56,53 +63,84 @@ class LayerOverlayView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        val width = width
-        val height = height
         canvas?.let {
-            val layerId = it.saveLayer(0f, 0f, width.toFloat(), height.toFloat(), null)
-            it.drawBitmap(drawable1.toBitmap(width, height), 0f, 0f, paint1)
-            paint1.xfermode = clearMode
-            targetArea?.let { area ->
-                it.drawCircle(area.first, area.second, area.third, paint1)
-            }
-            paint1.xfermode = null
-            it.restoreToCount(layerId)
-            targetArea?.let { area ->
-                it.drawBitmap(
-                    resources.getDrawable(R.drawable.guide_found).toBitmap(
-                        resources.getDimensionPixelSize(R.dimen.d162),
-                        resources.getDimensionPixelSize(R.dimen.d44),
-                    ),
-                    area.first - resources.getDimension(R.dimen.d81),
-                    area.second - area.third - resources.getDimension(R.dimen.d114),
-                    paint1
-                )
-                val textX = area.first
-                val textY = area.second - area.third - resources.getDimension(R.dimen.d52)
-                it.drawText("“发现”移到这里了", textX, textY, textPaint1)
-                it.drawBitmap(
-                    resources.getDrawable(R.drawable.guide_arrow_down).toBitmap(
-                        resources.getDimensionPixelSize(R.dimen.d04),
-                        resources.getDimensionPixelSize(R.dimen.d34)
-                    ),
-                    area.first,
-                    area.second - area.third - resources.getDimension(R.dimen.d38),
-                    paint1
-                )
+            targetArea?.let { (circleCenterX, circleCenterY, circleRadius) ->
+                drawCircleAndMaskBackground(it, circleCenterX, circleCenterY, circleRadius)
+                drawFoundPageImage(it, circleCenterX, circleCenterY, circleRadius)
+                drawText(it, circleCenterX, circleCenterY, circleRadius)
+                drawArrowImage(it, circleCenterX, circleCenterY, circleRadius)
             }
         }
     }
 
-    override fun performClick(): Boolean {
-        return super.performClick()
+    private fun drawCircleAndMaskBackground(
+        canvas: Canvas,
+        circleCenterX: Float,
+        circleCenterY: Float,
+        circleRadius: Float,
+    ) {
+        val layerId = canvas.saveLayer(0f, 0f, width.toFloat(), height.toFloat(), null)
+        paint1.xfermode = clearMode
+        canvas.drawColor(resources.color(R.color.black_80))
+        canvas.drawCircle(circleCenterX, circleCenterY, circleRadius, paint1)
+        paint1.xfermode = null
+        canvas.restoreToCount(layerId)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun drawFoundPageImage(
+        canvas: Canvas,
+        circleCenterX: Float,
+        circleCenterY: Float,
+        circleRadius: Float,
+    ) {
+        val foundPageImageWidth = resources.getDimensionPixelSize(R.dimen.d162)
+        val foundPageImageHeight = resources.getDimensionPixelSize(R.dimen.d44)
+        val paddingBetweenCircleAndFoundPageImage = resources.getDimension(R.dimen.d114)
+        val foundPageImageX = circleCenterX - foundPageImageWidth / 2
+        val foundPageImageY = circleCenterY - circleRadius - paddingBetweenCircleAndFoundPageImage
+        val bitmap = resources.drawable(R.drawable.guide_found)?.toBitmap(
+            foundPageImageWidth,
+            foundPageImageHeight,
+        ) ?: return
+        canvas.drawBitmap(bitmap, foundPageImageX, foundPageImageY, paint1)
+    }
+
+    private fun drawText(
+        canvas: Canvas,
+        circleCenterX: Float,
+        circleCenterY: Float,
+        circleRadius: Float,
+    ) {
+        val paddingBetweenCircleAndText = resources.getDimension(R.dimen.d50)
+        val textY = circleCenterY - circleRadius - paddingBetweenCircleAndText
+        canvas.drawText(text, circleCenterX, textY, textPaint1)
+    }
+
+    private fun drawArrowImage(
+        canvas: Canvas,
+        circleCenterX: Float,
+        circleCenterY: Float,
+        circleRadius: Float,
+    ) {
+        val arrowWidth = resources.getDimensionPixelSize(R.dimen.d06)
+        val arrowHeight = resources.getDimensionPixelSize(R.dimen.d36)
+        val paddingBetweenArrowAndCircle = resources.getDimensionPixelSize(R.dimen.d05)
+        val arrowX = circleCenterX - arrowWidth / 2
+        val arrowY = circleCenterY - circleRadius - paddingBetweenArrowAndCircle - arrowHeight
+        val bitmap = ResourcesCompat.getDrawable(resources, R.drawable.guide_arrow_down, null)?.toBitmap(
+            arrowWidth, arrowHeight
+        ) ?: return
+        canvas.drawBitmap(bitmap, arrowX, arrowY, paint1)
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             if (isTargetAreaTouch(event.x, event.y)) {
-                Toast.makeText(context, "你点击了目标区域\nx=${event.x} y=${event.y}", Toast.LENGTH_SHORT).show()
+                targetAreaClickCallback.invoke()
             } else {
-                Toast.makeText(context, "你点击了目标区域之外\nx=${event.x} y=${event.y}", Toast.LENGTH_SHORT).show()
+                notTargetAreaClickCallback.invoke()
             }
             performClick()
             return true
@@ -117,6 +155,10 @@ class LayerOverlayView @JvmOverloads constructor(
     }
 
     companion object {
+        private fun getNeedShownText(): String {
+            return "“发现”移到这里了"
+        }
+
         private const val TAG = "eternity6666"
     }
 }
