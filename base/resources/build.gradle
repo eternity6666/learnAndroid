@@ -32,10 +32,12 @@ android {
 
 dependencies {
 
-    implementation build_deps.kotlinCore
-    implementation build_deps.androidxAppCompat
-    implementation build_deps.materialDesign
-    testImplementation build_deps.junit
+    implementation libs.kotlinCore
+    implementation libs.androidxAppCompat
+    implementation libs.material
+
+    testImplementation libs.junit
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
