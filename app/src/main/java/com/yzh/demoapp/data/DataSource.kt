@@ -5,6 +5,7 @@ import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
+import com.yzh.demoapp.activity.WeatherActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
 
 object DataSource {
@@ -12,6 +13,13 @@ object DataSource {
     private val dataList: ArrayList<MainPageItemData> = ArrayList()
 
     init {
+        dataList.add(
+            MainPageItemData(
+                title = "天气",
+                clazz = WeatherActivity::class,
+                description = "retrofit + compose + flow"
+            )
+        )
         dataList.add(
             MainPageItemData(
                 title = "设备方向",
