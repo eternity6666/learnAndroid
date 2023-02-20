@@ -1,6 +1,7 @@
 package com.yzh.demoapp.data
 
 import com.yzh.demo.recycler_view.RecyclerViewActivity
+import com.yzh.demoapp.activity.CameraXDemoActivity
 import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
@@ -13,6 +14,12 @@ object DataSource {
     private val dataList: ArrayList<MainPageItemData> = ArrayList()
 
     init {
+        dataList.add(
+            MainPageItemData(
+                title = "Camerax Demo",
+                clazz = CameraXDemoActivity::class,
+            )
+        )
         dataList.add(
             MainPageItemData(
                 title = "天气",
