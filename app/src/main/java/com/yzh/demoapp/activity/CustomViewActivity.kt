@@ -6,14 +6,14 @@ import android.os.Looper
 import android.util.Log
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import com.yzh.demo.custom_view.CustomView
 import com.yzh.demo.custom_view.LayerOverlayView
 import com.yzh.demoapp.R
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class CustomViewActivity : AppCompatActivity() {
+class CustomViewActivity : ComponentActivity() {
     private val customView by lazy {
         findViewById<CustomView>(R.id.custom_view)
     }

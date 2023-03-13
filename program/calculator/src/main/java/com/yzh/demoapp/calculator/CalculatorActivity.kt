@@ -1,10 +1,10 @@
 package com.yzh.demoapp.calculator
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.yzh.demoapp.calculator.fragment.CalculatorFragment
 
-class CalculatorActivity : AppCompatActivity() {
+class CalculatorActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)

@@ -9,7 +9,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ImageCapture
 import androidx.camera.video.Recorder
 import androidx.camera.video.Recording
@@ -23,6 +22,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.core.Preview
 import androidx.camera.core.CameraSelector
 import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.ImageProxy
@@ -41,7 +41,7 @@ typealias LumaListener = (luma: Double) -> Unit
  * @author baronyang@tencent.com
  * @since 2023/2/20 16:16
  */
-class CameraXDemoActivity : AppCompatActivity() {
+class CameraXDemoActivity : ComponentActivity() {
     private lateinit var viewBinding: ActivityCameraxDemoBinding
 
     private var imageCapture: ImageCapture? = null

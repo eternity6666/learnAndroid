@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.OrientationEventListener
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
@@ -20,7 +20,7 @@ import com.yzh.demoapp.activity.OrientationActivity.Orientation.Companion.isPara
  * @author eternity6666@qq.com
  * @since 2022/11/24 16:16
  */
-class OrientationActivity : AppCompatActivity() {
+class OrientationActivity : ComponentActivity() {
 
     private val uiMode = MutableLiveData(false)
     private val sensorMode = MutableLiveData<Orientation>()

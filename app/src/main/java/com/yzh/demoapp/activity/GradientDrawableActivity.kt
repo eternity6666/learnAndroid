@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import com.yzh.demoapp.R
 
-class GradientDrawableActivity : AppCompatActivity() {
+class GradientDrawableActivity : ComponentActivity() {
 
     private var index = 0
     private lateinit var mBgView: View
