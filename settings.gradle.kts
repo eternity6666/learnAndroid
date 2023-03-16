@@ -26,3 +26,4 @@ include(
     ":base:resources",
 )
 
+include(":base:annotation")
