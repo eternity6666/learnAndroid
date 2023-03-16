@@ -36,6 +36,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yzh.annotation.YActivity
 import com.yzh.demoapp.MainActivity
 import com.yzh.demoapp.data.DataSource
 import com.yzh.demoapp.data.MainPageItemData
@@ -44,6 +45,7 @@ import com.yzh.demoapp.data.MainPageItemData
  * @author eternity6666@qq.com
  * @since 2022/6/12 16:16
  */
+@YActivity(description = "学一学 Compose")
 class ComposeLearnActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

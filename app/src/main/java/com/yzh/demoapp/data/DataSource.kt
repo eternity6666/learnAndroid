@@ -1,6 +1,5 @@
 package com.yzh.demoapp.data
 
-import android.app.Activity
 import com.yzh.annotation.YActivity
 import com.yzh.demo.card_view.CardViewActivity
 import com.yzh.demo.recycler_view.RecyclerViewActivity
@@ -12,11 +11,10 @@ import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
 import com.yzh.demoapp.activity.WeatherActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
-import kotlin.reflect.KClass
 
 object DataSource {
 
-    private val activityList = listOf<KClass<out Activity>>(
+    private val activityList = listOf(
         WeatherActivity::class,
         CameraXDemoActivity::class,
         OrientationActivity::class,
@@ -34,7 +32,7 @@ object DataSource {
         if (dataList.isEmpty()) {
             activityList.forEach { clazz ->
                 val annotation = clazz.annotations.find { it is YActivity } as? YActivity
-                val title = annotation?.title ?: clazz.simpleName.orEmpty()
+                val title = annotation?.title.orEmpty().ifEmpty { clazz.simpleName.orEmpty() }
                 val description = annotation?.description.orEmpty()
                 dataList.add(
                     MainPageItemData(

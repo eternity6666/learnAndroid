@@ -7,8 +7,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.yzh.annotation.YActivity
 import com.yzh.demoapp.R
 
+@YActivity(description = "文字操长情况下")
 class GradientDrawableActivity : ComponentActivity() {
 
     private var index = 0

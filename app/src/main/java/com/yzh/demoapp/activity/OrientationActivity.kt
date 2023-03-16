@@ -21,7 +21,7 @@ import com.yzh.demoapp.activity.OrientationActivity.Orientation.Companion.isPara
  * @author eternity6666@qq.com
  * @since 2022/11/24 16:16
  */
-@YActivity(title = "设备方向")
+@YActivity(title = "设备方向", description = "hello")
 class OrientationActivity : ComponentActivity() {
 
     private val uiMode = MutableLiveData(false)
