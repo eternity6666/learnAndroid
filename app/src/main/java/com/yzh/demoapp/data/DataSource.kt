@@ -26,23 +26,22 @@ object DataSource {
         CalculatorActivity::class,
         ComposeLearnActivity::class,
     )
-    private val dataList: ArrayList<MainPageItemData> = ArrayList()
+    private val dataList: ArrayList<MainPageItemData> = ArrayList<MainPageItemData>().apply {
+        activityList.forEach { clazz ->
+            val annotation = clazz.annotations.find { it is YActivity } as? YActivity
+            val title = annotation?.title.orEmpty().ifEmpty { clazz.simpleName.orEmpty() }
+            val description = annotation?.description.orEmpty()
+            add(
+                MainPageItemData(
+                    title = title,
+                    description = description,
+                    clazz = clazz,
+                )
+            )
+        }
+    }
 
     fun getMainPageList(): ArrayList<MainPageItemData> {
-        if (dataList.isEmpty()) {
-            activityList.forEach { clazz ->
-                val annotation = clazz.annotations.find { it is YActivity } as? YActivity
-                val title = annotation?.title.orEmpty().ifEmpty { clazz.simpleName.orEmpty() }
-                val description = annotation?.description.orEmpty()
-                dataList.add(
-                    MainPageItemData(
-                        title = title,
-                        description = description,
-                        clazz = clazz,
-                    )
-                )
-            }
-        }
         return dataList
     }
 }
