@@ -12,12 +12,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginTop
+import com.yzh.annotation.YActivity
 import com.yzh.demoapp.R
 import com.yzh.demoapp.util.AnimUtils
 
+@YActivity(description = "解决协调布局中复杂动画的demo")
 class ValueAnimatorActivity : AppCompatActivity() {
-
-    private val TAG = "ValueAnimatorActivity"
 
     private var DEFAULT_HEIGHT_100: Int = 0
     private var DEFAULT_HEIGHT_200: Int = 0

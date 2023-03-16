@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.google.gson.annotations.SerializedName
+import com.yzh.annotation.YActivity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -40,6 +41,7 @@ import java.util.Date
  * @author baronyang@tencent.com
  * @since 2023/2/2 16:16
  */
+@YActivity(description = "retrofit + compose + flow", title = "天气")
 class WeatherActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

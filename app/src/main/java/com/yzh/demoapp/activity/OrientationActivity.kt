@@ -13,6 +13,7 @@ import androidx.activity.ComponentActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
+import com.yzh.annotation.YActivity
 import com.yzh.demoapp.R
 import com.yzh.demoapp.activity.OrientationActivity.Orientation.Companion.isParallel
 
@@ -20,6 +21,7 @@ import com.yzh.demoapp.activity.OrientationActivity.Orientation.Companion.isPara
  * @author eternity6666@qq.com
  * @since 2022/11/24 16:16
  */
+@YActivity(title = "设备方向")
 class OrientationActivity : ComponentActivity() {
 
     private val uiMode = MutableLiveData(false)

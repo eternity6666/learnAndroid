@@ -7,12 +7,14 @@ import android.util.Log
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import androidx.activity.ComponentActivity
+import com.yzh.annotation.YActivity
 import com.yzh.demo.custom_view.CustomView
 import com.yzh.demo.custom_view.LayerOverlayView
 import com.yzh.demoapp.R
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+@YActivity(title = "自定义 View")
 class CustomViewActivity : ComponentActivity() {
     private val customView by lazy {
         findViewById<CustomView>(R.id.custom_view)
