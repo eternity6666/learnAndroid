@@ -29,6 +29,7 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.content.PermissionChecker
+import com.yzh.annotation.YActivity
 import com.yzh.demoapp.R
 import com.yzh.demoapp.databinding.ActivityCameraxDemoBinding
 import java.nio.ByteBuffer
@@ -41,6 +42,7 @@ typealias LumaListener = (luma: Double) -> Unit
  * @author baronyang@tencent.com
  * @since 2023/2/20 16:16
  */
+@YActivity(title = "Camerax Demo", description = "使用 camerax 的 demo")
 class CameraXDemoActivity : ComponentActivity() {
     private lateinit var viewBinding: ActivityCameraxDemoBinding
 

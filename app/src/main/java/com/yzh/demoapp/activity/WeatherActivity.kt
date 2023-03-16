@@ -41,7 +41,7 @@ import java.util.Date
  * @author baronyang@tencent.com
  * @since 2023/2/2 16:16
  */
-@YActivity(description = "retrofit + compose + flow", title = "天气")
+@YActivity(title = "天气", description = "retrofit + compose + flow")
 class WeatherActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
