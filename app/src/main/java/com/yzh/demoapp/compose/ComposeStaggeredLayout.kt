@@ -1,12 +1,11 @@
 package com.yzh.demoapp.compose
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,12 +14,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yzh.demo.mockdata.randomString
 
-@OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun LazyStaggeredLayout() {
-    LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Adaptive(90.dp),
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(90.dp),
         contentPadding = PaddingValues(2.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)

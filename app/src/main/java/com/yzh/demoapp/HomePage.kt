@@ -15,9 +15,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.material3.Card
@@ -40,7 +40,6 @@ import com.yzh.demoapp.data.DataSource
 import com.yzh.demoapp.data.MainPageItemData
 import com.yzh.base.extension.jumpTo
 
-@OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun HomePage(
@@ -48,8 +47,8 @@ fun HomePage(
 ) {
     val dataList = DataSource.getMainPageList()
     val context = LocalContext.current
-    LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Fixed(1),
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(1),
         contentPadding = PaddingValues(2.dp),
         verticalArrangement = Arrangement.spacedBy(space = 8.dp, alignment = Alignment.Top),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
