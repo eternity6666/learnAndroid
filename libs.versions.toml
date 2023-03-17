@@ -39,7 +39,7 @@ androidCompose = { module = "androidx.activity:activity-compose", version.ref = 
 composeFoundation = {module="androidx.compose.foundation:foundation"}
 composeUI = { module = "androidx.compose.ui:ui", version.ref = "composeVersion" }
 composeUIUnit = { module = "androidx.compose.ui:ui-unit", version.ref = "composeVersion" }
-composeMaterial = { module = "androidx.compose.material3:material3", version = "1.0.1" }
+composeMaterial3 = { module = "androidx.compose.material3:material3", version = "1.0.1" }
 composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeVersion" }
 composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeVersion" }
 composeUiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeVersion" }
