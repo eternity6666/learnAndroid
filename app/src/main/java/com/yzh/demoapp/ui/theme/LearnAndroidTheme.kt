@@ -4,28 +4,18 @@
 package com.yzh.demoapp.ui.theme
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
-import androidx.compose.ui.graphics.toArgb
 
-private val DarkColorScheme = darkColors(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    error = Pink80
-)
+private val DarkColorScheme = colorTheme_dark
 
-private val LightColorScheme = lightColors(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    error = Pink40
-)
+private val LightColorScheme = colorTheme_light
 
 @Composable
 fun LearnAndroidTheme(
@@ -45,13 +35,13 @@ fun LearnAndroidTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Color.TRANSPARENT
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
 
     MaterialTheme(
-        colors = colorScheme,
+        colorScheme = colorScheme,
         typography = Typography,
         content = content
     )

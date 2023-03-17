@@ -4,8 +4,10 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults.cardColors
+import androidx.compose.material3.CardDefaults.cardElevation
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,9 +23,9 @@ import com.yzh.demoapp.R
 fun CreatorHomePageListJustWatchView() {
     Card(
         shape = RoundedCornerShape(16.dp),
-        backgroundColor = Color.White,
+        colors = cardColors(containerColor = Color.White),
         border = BorderStroke(4.dp, Color.White.copy(alpha = 0.3f)),
-        elevation = 4.dp
+        elevation = cardElevation(defaultElevation = 4.dp)
     ) {
         Text(
             text = stringResource(id = R.string.creator_just_watched),

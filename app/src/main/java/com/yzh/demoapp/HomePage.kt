@@ -17,13 +17,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.items
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults.cardColors
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,8 +55,14 @@ fun HomePage(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier,
     ) {
-        items(dataList) { data ->
-            HomePageItem(data = data) {
+        itemsIndexed(dataList) { index, data ->
+            HomePageItem(
+                data = data,
+                containerColor = if (index % 2 == 0)
+                    MaterialTheme.colorScheme.primary
+                else
+                    MaterialTheme.colorScheme.secondary,
+            ) {
                 context.jumpTo(data.clazz)
             }
         }
@@ -65,6 +73,7 @@ fun HomePage(
 @Composable
 fun HomePageItem(
     data: MainPageItemData,
+    containerColor: Color = MaterialTheme.colorScheme.surface,
     onClick: () -> Unit,
 ) {
     val isExpand = remember {
@@ -78,7 +87,8 @@ fun HomePageItem(
                 enabled = true,
                 onClick = onClick,
                 onLongClick = { isExpand.value = !isExpand.value }
-            )
+            ),
+        colors = cardColors(containerColor = containerColor)
     ) {
         Column(modifier = Modifier.padding(10.dp)) {
             val rotate by animateFloatAsState(if (isExpand.value) 180f else 0f)
@@ -101,8 +111,8 @@ fun HomePageItem(
                 AnimatedVisibility(visible = isExpand.value) {
                     Text(
                         text = data.description,
-                        color = MaterialTheme.colors.secondary,
-                        style = MaterialTheme.typography.body2,
+                        color = MaterialTheme.colorScheme.onSecondary,
+                        style = MaterialTheme.typography.bodySmall,
                     )
                 }
             }
