@@ -6,6 +6,7 @@ import com.yzh.demo.recycler_view.RecyclerViewActivity
 import com.yzh.demoapp.activity.CameraXDemoActivity
 import com.yzh.demoapp.activity.ComposeLearnActivity
 import com.yzh.demoapp.activity.CustomViewActivity
+import com.yzh.demoapp.activity.FundActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
@@ -15,6 +16,7 @@ import com.yzh.demoapp.calculator.CalculatorActivity
 object DataSource {
 
     private val activityList = listOf(
+        FundActivity::class,
         WeatherActivity::class,
         CameraXDemoActivity::class,
         OrientationActivity::class,
