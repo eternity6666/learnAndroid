@@ -38,7 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yzh.demoapp.data.DataSource
 import com.yzh.demoapp.data.MainPageItemData
-import com.yzh.demoapp.util.jumpTo
+import com.yzh.base.extension.jumpTo
 
 @OptIn(ExperimentalFoundationApi::class)
 @Preview
