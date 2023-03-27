@@ -34,9 +34,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.core.graphics.drawable.toBitmap
+import com.yzh.annotation.YActivity
 import com.yzh.demoapp.ui.theme.LearnAndroidTheme
 
 
+@YActivity(title = "获取手机上安装的应用程序列表", description = "使用了 PackageManager, Compose")
 class AppListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
