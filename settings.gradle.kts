@@ -25,7 +25,7 @@ include(
     ":demo",
     ":demo:custom-view",
     ":demo:card-view",
-    ":demo:recycler_view",
+    ":demo:recycler-view",
     ":data",
     ":base",
     ":base:extension",
