@@ -30,6 +30,5 @@ include(
     ":base",
     ":base:extension",
     ":base:resources",
+    ":base:annotation",
 )
-
-include(":base:annotation")
