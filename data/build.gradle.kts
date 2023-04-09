@@ -30,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace = "com.yzh.demo.data"
+    namespace = "com.yzh.learnAndroid.data"
 }
 
 dependencies {

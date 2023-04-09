@@ -1,8 +1,8 @@
 package com.yzh.demoapp.data
 
 import com.yzh.annotation.YActivity
-import com.yzh.demo.card_view.CardViewActivity
-import com.yzh.demo.recycler_view.RecyclerViewActivity
+import com.yzh.learnAndroid.card_view.CardViewActivity
+import com.yzh.learnAndroid.recycler_view.RecyclerViewActivity
 import com.yzh.demoapp.activity.AppListActivity
 import com.yzh.demoapp.activity.CameraXDemoActivity
 import com.yzh.demoapp.activity.ComposeLearnActivity

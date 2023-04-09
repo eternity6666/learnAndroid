@@ -1,4 +1,4 @@
-package com.yzh.demo.recycler_view
+package com.yzh.learnAndroid.recycler_view
 
 import android.content.Context
 import android.util.AttributeSet

@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import androidx.activity.ComponentActivity
 import com.yzh.annotation.YActivity
-import com.yzh.demo.custom_view.CustomView
-import com.yzh.demo.custom_view.LayerOverlayView
+import com.yzh.learnAndroid.custom_view.CustomView
+import com.yzh.learnAndroid.custom_view.LayerOverlayView
 import com.yzh.demoapp.R
 import kotlin.math.pow
 import kotlin.math.sqrt

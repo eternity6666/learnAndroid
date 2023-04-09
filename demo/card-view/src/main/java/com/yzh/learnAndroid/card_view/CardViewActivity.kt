@@ -1,4 +1,4 @@
-package com.yzh.demo.card_view
+package com.yzh.learnAndroid.card_view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

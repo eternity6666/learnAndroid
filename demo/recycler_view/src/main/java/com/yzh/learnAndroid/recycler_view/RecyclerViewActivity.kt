@@ -1,4 +1,4 @@
-package com.yzh.demo.recycler_view
+package com.yzh.learnAndroid.recycler_view
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.yzh.demo.data.source.FirstDataSource
+import com.yzh.learnAndroid.data.source.FirstDataSource
 
 class RecyclerViewActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

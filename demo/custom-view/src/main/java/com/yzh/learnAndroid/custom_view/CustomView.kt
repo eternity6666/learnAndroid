@@ -1,4 +1,4 @@
-package com.yzh.demo.custom_view
+package com.yzh.learnAndroid.custom_view
 
 import android.content.Context
 import android.content.res.TypedArray

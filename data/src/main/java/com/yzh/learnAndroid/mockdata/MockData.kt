@@ -1,4 +1,4 @@
-package com.yzh.demo.mockdata
+package com.yzh.learnAndroid.mockdata
 
 import android.graphics.Color
 import java.util.ArrayList
