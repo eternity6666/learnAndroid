@@ -2,10 +2,10 @@
 androidGradlePlugin = "7.3.1"
 buildToolsVersion = "30.0.3"
 compileSdk = "33"
-composeVersion = "1.3.3"
-activityVersion = "1.6.1"
-cameraxVersion = "1.2.1"
-lifecycleVersion = "2.6.0"
+composeVersion = "1.4.1"
+activityVersion = "1.7.0"
+cameraxVersion = "1.2.2"
+lifecycleVersion = "2.6.1"
 hilt = "2.44.2"
 kotlin = "1.8.10"
 ksp = "1.7.21-1.0.8"
@@ -22,16 +22,16 @@ targetSdk = "33"
 material = { module = "com.google.android.material:material", version = "1.8.0" }
 androidxConstraintLayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.1.4" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.3.0" }
-androidxAppCompat = { module = "androidx.appcompat:appcompat", version.ref = "activityVersion" }
+androidxAppCompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
 flexboxlayout = { module = "com.google.android.flexbox:flexbox", version = "3.0.0" }
 activityKtx = { module = "androidx.activity:activity-ktx", version.ref = "activityVersion" }
-fragmentKtx = { module = "androidx.fragment:fragment-ktx", version = "1.5.5" }
+fragmentKtx = { module = "androidx.fragment:fragment-ktx", version = "1.5.6" }
 lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
 lifecycleLiveDataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleVersion" }
 lifecycleViewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
 
 # kotlin
-kotlinCore = { module = "androidx.core:core-ktx", version = "1.9.0" }
+kotlinCore = { module = "androidx.core:core-ktx", version = "1.10.0" }
 kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
