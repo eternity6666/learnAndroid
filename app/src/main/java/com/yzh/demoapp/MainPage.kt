@@ -26,9 +26,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.yzh.demoapp.compose.CubicBezierPage
-import java.io.File
-import java.io.FileOutputStream
-import java.util.zip.ZipOutputStream
 
 private sealed class Screen(
     val route: String,
@@ -86,10 +83,5 @@ fun MainPage() {
             }
             composable(Screen.Tool.route) { CubicBezierPage() }
         }
-    }
-
-    val x = ZipOutputStream(FileOutputStream(File("")))
-    x.use {
-
     }
 }
