@@ -75,7 +75,7 @@ class AppBarLayoutActivity : ComponentActivity() {
         findViewById<ComposeView>(R.id.log_view).also {
             it.setContent {
                 val data = viewModel.logData.collectAsState(initial = emptyList())
-                LazyVerticalGrid(columns = GridCells.Adaptive(20.dp), content = {
+                LazyVerticalGrid(columns = GridCells.Adaptive(40.dp), content = {
                     items(data.value) { text ->
                         Text(text = text)
                     }
