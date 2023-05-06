@@ -1,8 +1,7 @@
 package com.yzh.demoapp.data
 
 import com.yzh.annotation.YActivity
-import com.yzh.learnAndroid.card_view.CardViewActivity
-import com.yzh.learnAndroid.recycler_view.RecyclerViewActivity
+import com.yzh.demoapp.activity.AppBarLayoutActivity
 import com.yzh.demoapp.activity.AppListActivity
 import com.yzh.demoapp.activity.CameraXDemoActivity
 import com.yzh.demoapp.activity.ComposeLearnActivity
@@ -13,6 +12,8 @@ import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
 import com.yzh.demoapp.activity.WeatherActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
+import com.yzh.learnAndroid.card_view.CardViewActivity
+import com.yzh.learnAndroid.recycler_view.RecyclerViewActivity
 
 object DataSource {
 
@@ -29,6 +30,7 @@ object DataSource {
         CardViewActivity::class,
         CalculatorActivity::class,
         ComposeLearnActivity::class,
+        AppBarLayoutActivity::class,
     )
     private val dataList: ArrayList<MainPageItemData> = ArrayList<MainPageItemData>().apply {
         activityList.forEach { clazz ->
