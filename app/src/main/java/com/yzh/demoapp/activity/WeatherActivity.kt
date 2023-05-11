@@ -39,7 +39,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/2/2 16:16
  */
 @YActivity(title = "天气", description = "retrofit + compose + flow")
