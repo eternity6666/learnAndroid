@@ -3,13 +3,18 @@
  */
 package com.yzh.demoapp.activity
 
+import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -18,9 +23,11 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.animation.addListener
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.NestedScrollView
@@ -57,6 +64,9 @@ class AppBarLayoutActivity : ComponentActivity() {
     private val listScrollView by lazy {
         findViewById<NestedScrollView>(R.id.list_scroll_view)
     }
+    private val contentLayout by lazy {
+        findViewById<FrameLayout>(R.id.content_layout)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,11 +75,14 @@ class AppBarLayoutActivity : ComponentActivity() {
     }
 
     private fun initView() {
-        findViewById<TextView>(R.id.text_view).also { textView ->
-            textView.setOnClickListener {
-                val intent = Intent()
-                intent.setClass(this, AppListActivity::class.java)
-                startActivityForResult(intent, KEY_REQUEST_CODE_ACTIVITY)
+        findViewById<TextView>(R.id.hide).also {
+            it.setOnClickListener {
+                hideAppBarPartArea()
+            }
+        }
+        findViewById<TextView>(R.id.show).also {
+            it.setOnClickListener {
+                showAppBar()
             }
         }
         findViewById<ComposeView>(R.id.log_view).also {
@@ -109,23 +122,35 @@ class AppBarLayoutActivity : ComponentActivity() {
 
     private fun hideAppBarPartArea() {
         val appBarLayoutParams = appBarLayout.layoutParams as? CoordinatorLayout.LayoutParams
-        (appBarLayoutParams?.behavior as? AppBarLayout.Behavior)?.let { behavior ->
-            val distance = behavior.topAndBottomOffset + dp50
-            var last = 0
-            ValueAnimator.ofInt(0, distance).apply {
-                duration = 300
-                addUpdateListener {
-                    val currentValue = it.animatedValue as Int
-                    val dy = currentValue - last
-                    last = currentValue
-                    behavior.onNestedPreScroll(
-                        coordinatorLayout, appBarLayout, listScrollView, 0, dy, intArrayOf(0, 0),
-                        ViewCompat.TYPE_NON_TOUCH
-                    )
+        val behavior = (appBarLayoutParams?.behavior as? AppBarLayout.Behavior) ?: return
+        val distance = behavior.topAndBottomOffset + dp50
+        val animator = buildAnimator(
+            distance, behavior, coordinatorLayout, appBarLayout, contentLayout
+        )
+        AnimatorSet().apply {
+            play(animator)
+            addListener(
+                onEnd = {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        showAppBar()
+                    }, 3000)
                 }
-                Log.i(TAG, "ValueAnimator start")
-                start()
-            }
+            )
+            start()
+        }
+    }
+
+    private fun showAppBar() {
+        val appBarLayoutParams = appBarLayout.layoutParams as? CoordinatorLayout.LayoutParams
+        val behavior = (appBarLayoutParams?.behavior as? AppBarLayout.Behavior) ?: return
+        val distance = behavior.topAndBottomOffset
+        val animator = buildAnimator(
+            distance, behavior, coordinatorLayout, appBarLayout, contentLayout
+        )
+        val color = Color(0xFFFFFFFF)
+        AnimatorSet().apply {
+            play(animator)
+            start()
         }
     }
 
@@ -151,5 +176,28 @@ class AppBarLayoutActivity : ComponentActivity() {
     companion object {
         private const val TAG: String = "AppBarLayoutActivity"
         private const val KEY_REQUEST_CODE_ACTIVITY = 200003
+
+        private fun buildAnimator(
+            distance: Int,
+            behavior: AppBarLayout.Behavior,
+            coordinatorLayout: CoordinatorLayout,
+            appBarLayout: AppBarLayout,
+            contentLayout: View,
+        ): ValueAnimator {
+            var last = 0
+            return ValueAnimator.ofInt(0, distance).apply {
+                duration = 300
+                addUpdateListener {
+                    val currentValue = it.animatedValue as Int
+                    val dy = currentValue - last
+                    last = currentValue
+                    behavior.onNestedPreScroll(
+                        coordinatorLayout, appBarLayout, contentLayout,
+                        0, dy, intArrayOf(0, 0), ViewCompat.TYPE_NON_TOUCH
+                    )
+                }
+                Log.i(TAG, "ValueAnimator start")
+            }
+        }
     }
 }

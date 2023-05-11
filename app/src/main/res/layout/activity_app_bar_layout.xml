@@ -16,13 +16,14 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/d100"
                 android:orientation="vertical"
-                app:layout_scrollFlags="scroll|enterAlways">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <View
                     android:layout_width="match_parent"
@@ -40,18 +41,24 @@
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/list_scroll_view"
+        <FrameLayout
+            android:id="@+id/content_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
-                android:id="@+id/list_layout"
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/list_scroll_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </androidx.core.widget.NestedScrollView>
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/list_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.compose.ui.platform.ComposeView
@@ -63,17 +70,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coordinator_container" />
 
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="@dimen/d64"
+    <LinearLayout
+        android:layout_width="@dimen/d128"
         android:layout_height="@dimen/d64"
         android:layout_marginEnd="@dimen/d100"
         android:layout_marginBottom="@dimen/d100"
-        android:background="@color/red"
-        android:gravity="center"
-        android:text="@string/creator_just_watched"
-        android:textColor="@color/white"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/hide"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/d64"
+            android:layout_weight="1"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:text="@string/hide"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/show"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/d64"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="@string/show"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
