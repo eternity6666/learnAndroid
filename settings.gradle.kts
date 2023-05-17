@@ -31,4 +31,5 @@ include(
     ":base:extension",
     ":base:resources",
     ":base:annotation",
+    ":leetcode"
 )
