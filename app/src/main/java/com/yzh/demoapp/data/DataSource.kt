@@ -1,6 +1,7 @@
 package com.yzh.demoapp.data
 
 import com.yzh.annotation.YActivity
+import com.yzh.demoapp.aacell.AACellActivity
 import com.yzh.demoapp.activity.AppBarLayoutActivity
 import com.yzh.demoapp.activity.AppListActivity
 import com.yzh.demoapp.activity.CameraXDemoActivity
@@ -18,6 +19,7 @@ import com.yzh.learnAndroid.recycler_view.RecyclerViewActivity
 object DataSource {
 
     private val activityList = listOf(
+        AACellActivity::class,
         AppListActivity::class,
         FundActivity::class,
         WeatherActivity::class,
