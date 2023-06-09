@@ -7,6 +7,8 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.yzh.demoapp.base.network.newWebSocket
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -43,47 +45,41 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
 
     fun loadData(roomId: String = "") = viewModelScope.launch(Dispatchers.IO) {
         webSocket?.cancel()
-        webSocket = client.newWebSocket(request = buildRequest(roomId, token), object : WebSocketListener() {
-            override fun onOpen(webSocket: WebSocket, response: Response) {
+        val token = client.fetchToken(roomId)
+        Log.i(TAG, token)
+        webSocket = client.newWebSocket(
+            request = buildRequest(roomId, token),
+            onOpen = { webSocket, response ->
                 Log.i(TAG, "onOpen: response=$response")
-                super.onOpen(webSocket, response)
                 viewModelScope.launch {
                     _isConnected.emit(true)
                 }
-            }
+            },
 
-            override fun onMessage(webSocket: WebSocket, text: String) {
+            onTextMessage = { _, text ->
                 Log.i(TAG, "onMessageString: $text")
-                super.onMessage(webSocket, text)
                 viewModelScope.launch {
                     _messageList.emit(text)
                 }
-            }
+            },
 
-            override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
+            onByteMessage = { _, bytes ->
                 Log.i(TAG, "onMessageByteString: $bytes")
-                super.onMessage(webSocket, bytes)
-                viewModelScope.launch {
-                    _messageList.emit(bytes.utf8())
-                }
-            }
+            },
 
-            override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
+            onClosing = { _, code, reason ->
                 Log.i(TAG, "onClosing: code=$code reason=$reason")
-                super.onClosing(webSocket, code, reason)
-            }
+            },
 
-            override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+            onClosed = { _, code, reason ->
                 Log.i(TAG, "onClosed: code=$code reason=$reason")
-                super.onClosed(webSocket, code, reason)
-            }
+            },
 
-            override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+            onFailure = { _, t, response ->
                 Log.i(TAG, "onFailure: response=$response")
                 t.printStackTrace()
-                super.onFailure(webSocket, t, response)
-            }
-        })
+            },
+        )
     }
 
     companion object {
