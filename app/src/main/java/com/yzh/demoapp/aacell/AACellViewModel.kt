@@ -54,6 +54,7 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
             onOpen = { webSocket, response ->
                 Log.i(TAG, "onOpen: response=$response")
                 viewModelScope.launch {
+                    requestMessages(roomId, token)
                     webSocket.send("CONNECT\naccept-version:1.2,1.1,1.0\nheart-beat:10000,10000\nroomid:$roomId\n\n\u0000")
                     webSocket.subscribe(destination = "/topic/message/$roomId")
                     webSocket.subscribe(destination = "/topic/file/$roomId")
@@ -94,6 +95,24 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
                 t.printStackTrace()
             },
         )
+    }
+
+    private fun requestMessages(roomId: String, token: String) = viewModelScope.launch(Dispatchers.IO) {
+        val responseJson = runCatching {
+            client.newCall(
+                Request.Builder()
+                    .url("https://aacell.me/-/res/messages")
+                    .header("roomid", roomId)
+                    .header("token", token)
+                    .build()
+            ).execute()
+        }.onFailure {
+            Log.e(TAG, "requestMessages failure")
+            it.printStackTrace()
+        }.getOrNull()?.body?.string().orEmpty()
+        val allMessage = responseJson.toTyped<ResponseData<AACellMessage>>()?.data ?: emptyList()
+        Log.i(TAG, "$allMessage")
+        _messageList.emitAll(allMessage)
     }
 
     companion object {
