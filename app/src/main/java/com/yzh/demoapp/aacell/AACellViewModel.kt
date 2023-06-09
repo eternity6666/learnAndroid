@@ -7,7 +7,10 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.yzh.demoapp.base.data.emit
+import com.yzh.demoapp.base.data.emitAll
+import com.yzh.demoapp.base.data.emitItem
+import com.yzh.demoapp.base.data.toTyped
+import com.yzh.demoapp.base.network.ResponseData
 import com.yzh.demoapp.base.network.newWebSocket
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -62,7 +65,7 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
                             text.substringAfter("\n\n")
                                 .substringBefore("\u0000")
                         )?.let { message ->
-                            _messageList.emit(message)
+                            _messageList.emitItem(message)
                         }
                     }
                 }
