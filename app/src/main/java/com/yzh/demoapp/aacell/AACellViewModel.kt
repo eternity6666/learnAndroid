@@ -39,16 +39,9 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
     private var webSocket: WebSocket? = null
 
     fun sendMessage(message: String) {
-        webSocket?.send(message)
-        viewModelScope.launch {
-            _messageList.emit(message)
-        }
     }
 
-    fun loadData(
-        roomId: String = "",
-        token: String = TOKEN,
-    ) {
+    fun loadData(roomId: String = "") = viewModelScope.launch(Dispatchers.IO) {
         webSocket?.cancel()
         webSocket = client.newWebSocket(request = buildRequest(roomId, token), object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
@@ -95,26 +88,41 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
 
     companion object {
         private const val TAG = "AACell"
-        private const val TOKEN =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsImV4cCI6MTY4NjIzMTc2MCwicm9vbWlkIjoiMDkwOSJ9.Smmr8LknMwsF1XXud6oBa8kUrD71Jk2TB0J02q5ACDo"
+        private const val KEY_MESSAGE = "MESSAGE"
 
         private fun buildRequest(
             roomId: String = "",
             token: String = "",
         ): Request {
             return Request.Builder()
-                .get()
-                .url(
-                    "wss://aacell.me/socket/connect/421/svwoft3c/websocket?roomid=$roomId&token=$token"
+                .url(buildWebSocketUrl(roomId, token))
+                .header("Host", "aacell.me")
+                .header("Accept-Encoding", "gzip, deflate, br")
+                .header("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8")
+                .header(
+                    "User-Agent",
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
                 )
                 .build()
         }
 
-        private suspend fun <T> MutableStateFlow<List<T>>.emit(newItem: T) {
-            emit(buildList {
-                addAll(value)
-                add(newItem)
-            })
+        private fun buildWebSocketUrl(roomId: String, token: String): String {
+            return "wss://aacell.me/socket/connect/websocket?roomid=$roomId&token=$token";
+        }
+
+        private fun OkHttpClient.fetchToken(roomId: String, retry: Int = 3): String {
+            if (roomId.isEmpty() || retry < 0) {
+                return ""
+            }
+            val response = newCall(
+                Request.Builder()
+                    .url("https://aacell.me/$roomId")
+                    .build()
+            ).execute()
+            val responseString = response.body?.string().orEmpty()
+            val tokenPattern = Regex("""token =\s+"(.*?)"\s*""")
+            val token = tokenPattern.find(responseString)?.groupValues?.get(1)?.substringAfter("token = ")
+            return token?.takeIf { it.isNotEmpty() } ?: fetchToken(roomId, retry - 1)
         }
     }
 }
