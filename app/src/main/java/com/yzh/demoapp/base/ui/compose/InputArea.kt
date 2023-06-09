@@ -1,7 +1,7 @@
 /*
  * CopyRight (C) 2023 Tencent. All rights reserved.
  */
-package com.yzh.demoapp.compose.base
+package com.yzh.demoapp.base.ui.compose
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope

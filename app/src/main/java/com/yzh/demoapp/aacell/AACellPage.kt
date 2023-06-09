@@ -21,7 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.yzh.demoapp.compose.base.InputArea
+import com.yzh.demoapp.base.ui.compose.InputArea
 
 
 @Composable
