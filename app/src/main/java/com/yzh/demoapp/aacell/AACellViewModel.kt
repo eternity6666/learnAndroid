@@ -12,6 +12,7 @@ import com.yzh.demoapp.base.data.emitItem
 import com.yzh.demoapp.base.data.toTyped
 import com.yzh.demoapp.base.network.ResponseData
 import com.yzh.demoapp.base.network.newWebSocket
+import com.yzh.demoapp.base.network.subscribe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -53,6 +54,11 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
             onOpen = { webSocket, response ->
                 Log.i(TAG, "onOpen: response=$response")
                 viewModelScope.launch {
+                    webSocket.send("CONNECT\naccept-version:1.2,1.1,1.0\nheart-beat:10000,10000\nroomid:$roomId\n\n\u0000")
+                    webSocket.subscribe(destination = "/topic/message/$roomId")
+                    webSocket.subscribe(destination = "/topic/file/$roomId")
+                    webSocket.subscribe(destination = "/topic/category/$roomId")
+                    webSocket.subscribe(destination = "/topic/info/$roomId")
                     _isConnected.emit(true)
                 }
             },
