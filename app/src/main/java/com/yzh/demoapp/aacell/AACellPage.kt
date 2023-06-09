@@ -86,7 +86,7 @@ private fun AACellContent(
     ) {
         items(messageList) {
             Text(
-                text = it,
+                text = it.message,
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.background)
                     .fillMaxWidth()

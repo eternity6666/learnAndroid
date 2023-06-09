@@ -7,6 +7,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.yzh.demoapp.base.data.emit
 import com.yzh.demoapp.base.network.newWebSocket
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,10 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.Response
 import okhttp3.WebSocket
-import okhttp3.WebSocketListener
-import okio.ByteString
 import java.util.concurrent.TimeUnit
 
 /**
@@ -36,8 +34,8 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
 
     private val _isConnected = MutableStateFlow(false)
     val isConnected: Flow<Boolean> = _isConnected
-    private val _messageList = MutableStateFlow(emptyList<String>())
-    val messageList: Flow<List<String>> = _messageList
+    private val _messageList = MutableStateFlow(emptyList<AACellMessage>())
+    val messageList: Flow<List<AACellMessage>> = _messageList
     private var webSocket: WebSocket? = null
 
     fun sendMessage(message: String) {
@@ -59,7 +57,14 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
             onTextMessage = { _, text ->
                 Log.i(TAG, "onMessageString: $text")
                 viewModelScope.launch {
-                    _messageList.emit(text)
+                    if (text.startsWith(KEY_MESSAGE)) {
+                        AACellMessage(
+                            text.substringAfter("\n\n")
+                                .substringBefore("\u0000")
+                        )?.let { message ->
+                            _messageList.emit(message)
+                        }
+                    }
                 }
             },
 
@@ -103,7 +108,7 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
         }
 
         private fun buildWebSocketUrl(roomId: String, token: String): String {
-            return "wss://aacell.me/socket/connect/websocket?roomid=$roomId&token=$token";
+            return "wss://aacell.me/socket/connect/websocket?roomid=$roomId&token=$token"
         }
 
         private fun OkHttpClient.fetchToken(roomId: String, retry: Int = 3): String {
