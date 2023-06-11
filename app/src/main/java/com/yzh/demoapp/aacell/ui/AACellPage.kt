@@ -1,7 +1,7 @@
 /*
  * CopyRight (C) 2023 Tencent. All rights reserved.
  */
-package com.yzh.demoapp.aacell
+package com.yzh.demoapp.aacell.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +21,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.yzh.demoapp.aacell.AACellViewModel
+import com.yzh.demoapp.aacell.model.AACellScreen
 import com.yzh.demoapp.base.ui.compose.InputArea
 
 
@@ -28,6 +33,19 @@ import com.yzh.demoapp.base.ui.compose.InputArea
 internal fun AACellPage(
     viewModel: AACellViewModel,
 ) {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = AACellScreen.AACellHome.route,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        composable(AACellScreen.AACellHome.route) {
+            AACellHome(
+                modifier = Modifier.fillMaxSize(),
+                viewModel = viewModel
+            )
+        }
+    }
     val isConnected by viewModel.isConnected.collectAsState(initial = false)
     if (isConnected) {
         Column(modifier = Modifier.fillMaxSize()) {

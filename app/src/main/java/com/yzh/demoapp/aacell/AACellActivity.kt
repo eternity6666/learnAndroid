@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import com.yzh.annotation.YActivity
+import com.yzh.demoapp.aacell.ui.AACellPage
 import com.yzh.demoapp.ui.theme.LearnAndroidTheme
 
 @YActivity(title = "AACell")
