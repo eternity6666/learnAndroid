@@ -9,6 +9,15 @@ import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import okio.ByteString
+import java.util.concurrent.TimeUnit
+
+val okHttpClient by lazy {
+    OkHttpClient.Builder()
+        .readTimeout(3, TimeUnit.SECONDS)
+        .writeTimeout(3, TimeUnit.SECONDS)
+        .connectTimeout(3, TimeUnit.SECONDS)
+        .build()
+}
 
 fun OkHttpClient.newWebSocket(
     request: Request,
