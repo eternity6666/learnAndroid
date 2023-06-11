@@ -7,11 +7,13 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.yzh.demoapp.aacell.model.RoomType
 import com.yzh.demoapp.base.data.emitAll
 import com.yzh.demoapp.base.data.emitItem
 import com.yzh.demoapp.base.data.toTyped
 import com.yzh.demoapp.base.network.ResponseData
 import com.yzh.demoapp.base.network.newWebSocket
+import com.yzh.demoapp.base.network.okHttpClient
 import com.yzh.demoapp.base.network.subscribe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +22,6 @@ import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
-import java.util.concurrent.TimeUnit
 
 /**
  * @author baronyang@tencent.com
@@ -29,11 +30,7 @@ import java.util.concurrent.TimeUnit
 
 class AACellViewModel(application: Application) : AndroidViewModel(application) {
     private val client by lazy {
-        OkHttpClient.Builder()
-            .readTimeout(3, TimeUnit.SECONDS)
-            .writeTimeout(3, TimeUnit.SECONDS)
-            .connectTimeout(3, TimeUnit.SECONDS)
-            .build()
+        okHttpClient
     }
 
     private val _isConnected = MutableStateFlow(false)
@@ -97,23 +94,25 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
         )
     }
 
-    private fun requestMessages(roomId: String, token: String) = viewModelScope.launch(Dispatchers.IO) {
-        val responseJson = runCatching {
-            client.newCall(
-                Request.Builder()
-                    .url("https://aacell.me/-/res/messages")
-                    .header("roomid", roomId)
-                    .header("token", token)
-                    .build()
-            ).execute()
-        }.onFailure {
-            Log.e(TAG, "requestMessages failure")
-            it.printStackTrace()
-        }.getOrNull()?.body?.string().orEmpty()
-        val allMessage = responseJson.toTyped<ResponseData<AACellMessage>>()?.data ?: emptyList()
-        Log.i(TAG, "$allMessage")
-        _messageList.emitAll(allMessage)
-    }
+    private fun requestMessages(roomId: String, token: String) =
+        viewModelScope.launch(Dispatchers.IO) {
+            val responseJson = runCatching {
+                client.newCall(
+                    Request.Builder()
+                        .url("https://aacell.me/-/res/messages")
+                        .header("roomid", roomId)
+                        .header("token", token)
+                        .build()
+                ).execute()
+            }.onFailure {
+                Log.e(TAG, "requestMessages failure")
+                it.printStackTrace()
+            }.getOrNull()?.body?.string().orEmpty()
+            val allMessage = responseJson.toTyped<ResponseData<AACellMessage>>()?.data
+                ?: emptyList()
+            Log.i(TAG, "$allMessage")
+            _messageList.emitAll(allMessage)
+        }
 
     companion object {
         private const val TAG = "AACell"
