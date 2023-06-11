@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.yzh.demoapp.aacell.model.RoomType
+import com.yzh.demoapp.aacell.repository.AACellRepository
 import com.yzh.demoapp.base.data.emitAll
 import com.yzh.demoapp.base.data.emitItem
 import com.yzh.demoapp.base.data.toTyped
@@ -32,14 +33,34 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
     private val client by lazy {
         okHttpClient
     }
+    private val repository by lazy {
+        AACellRepository()
+    }
 
     private val _isConnected = MutableStateFlow(false)
     val isConnected: Flow<Boolean> = _isConnected
     private val _messageList = MutableStateFlow(emptyList<AACellMessage>())
     val messageList: Flow<List<AACellMessage>> = _messageList
     private var webSocket: WebSocket? = null
+    private val _roomType = MutableStateFlow<RoomType>(RoomType.Unknown)
+    val roomType: Flow<RoomType> = _roomType
 
     fun sendMessage(message: String) {
+    }
+
+    fun fetchRoomType(roomId: String) {
+        viewModelScope.launch {
+            _roomType.emit(repository.fetchRoomType(roomId))
+        }
+    }
+
+    fun randomRoom() {
+        viewModelScope.launch {
+            val roomId = repository.randomRoom()
+            if (roomId.isNotEmpty()) {
+                loadData(roomId = roomId)
+            }
+        }
     }
 
     fun loadData(roomId: String = "") = viewModelScope.launch(Dispatchers.IO) {
