@@ -149,7 +149,8 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
             ).execute()
             val responseString = response.body?.string().orEmpty()
             val tokenPattern = Regex("""token =\s+"(.*?)"\s*""")
-            val token = tokenPattern.find(responseString)?.groupValues?.get(1)?.substringAfter("token = ")
+            val token = tokenPattern.find(responseString)?.groupValues?.get(1)
+                ?.substringAfter("token = ")
             return token?.takeIf { it.isNotEmpty() } ?: fetchToken(roomId, retry - 1)
         }
     }
