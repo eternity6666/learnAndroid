@@ -37,8 +37,8 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.material.appbar.AppBarLayout
 import com.yzh.annotation.YActivity
 import com.yzh.demoapp.R
-import com.yzh.demoapp.util.dp100
-import com.yzh.demoapp.util.dp50
+import com.yzh.demoapp.base.ui.common.dp100
+import com.yzh.demoapp.base.ui.common.dp50
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
