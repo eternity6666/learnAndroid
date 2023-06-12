@@ -54,6 +54,12 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    fun createRoom(roomId: String) {
+        viewModelScope.launch {
+            repository.createRoom(roomId)
+        }
+    }
+
     fun randomRoom() {
         viewModelScope.launch {
             val roomId = repository.randomRoom()

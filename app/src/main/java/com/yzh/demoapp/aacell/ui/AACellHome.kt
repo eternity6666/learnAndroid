@@ -1,5 +1,6 @@
 package com.yzh.demoapp.aacell.ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -23,7 +24,9 @@ internal fun AACellHome(
 ) {
     val roomType by viewModel.roomType.collectAsState(initial = RoomType.Unknown)
     Box(modifier = modifier) {
-        Column {
+        Column(
+            verticalArrangement = Arrangement.Center
+        ) {
             var roomId by remember {
                 mutableStateOf("")
             }
@@ -48,7 +51,11 @@ internal fun AACellHome(
                 }
 
                 RoomType.NotFound, RoomType.Found.NoPassword -> {
-
+                    Button(onClick = {
+                        viewModel.loadData(roomId)
+                    }) {
+                        Text(text = "创建或进入")
+                    }
                 }
 
                 RoomType.Found.NeedPassword -> {
@@ -58,6 +65,11 @@ internal fun AACellHome(
                             password = it
                         },
                     )
+                    Button(onClick = {
+                        viewModel.createRoom(roomId)
+                    }) {
+                        Text(text = "创建")
+                    }
                 }
             }
         }
