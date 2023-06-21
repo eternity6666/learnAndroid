@@ -61,7 +61,7 @@ class AACellViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun randomRoom() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val roomId = repository.randomRoom()
             if (roomId.isNotEmpty()) {
                 loadData(roomId = roomId)

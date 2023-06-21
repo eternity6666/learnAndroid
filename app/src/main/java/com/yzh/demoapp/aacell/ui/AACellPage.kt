@@ -45,6 +45,12 @@ internal fun AACellPage(
                 viewModel = viewModel
             )
         }
+        composable(AACellScreen.AACellConnected.route) {
+            AACellConnected(
+                modifier = Modifier.fillMaxSize(),
+                viewModel = viewModel,
+            )
+        }
     }
     val isConnected by viewModel.isConnected.collectAsState(initial = false)
     if (isConnected) {

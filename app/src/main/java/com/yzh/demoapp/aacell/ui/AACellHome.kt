@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.yzh.demoapp.aacell.AACellViewModel
 import com.yzh.demoapp.aacell.model.RoomType
@@ -25,6 +26,7 @@ internal fun AACellHome(
     val roomType by viewModel.roomType.collectAsState(initial = RoomType.Unknown)
     Box(modifier = modifier) {
         Column(
+            modifier = Modifier.align(Alignment.Center),
             verticalArrangement = Arrangement.Center
         ) {
             var roomId by remember {

@@ -1,5 +1,6 @@
 package com.yzh.demoapp.aacell.repository
 
+import android.util.Log
 import com.yzh.demoapp.aacell.model.RoomType
 import com.yzh.demoapp.base.data.toTyped
 import com.yzh.demoapp.base.network.ResponseData
@@ -48,6 +49,12 @@ class AACellRoomRepositoryImpl(private val client: OkHttpClient) : AACellRoomRep
     }
 
     override suspend fun randomRoom(): String {
+        val response = client.newCall(
+            Request.Builder()
+                .url("$BASE_URL/room/random")
+                .build()
+        ).execute()
+        Log.i(TAG, "randomRoom: ${response.body?.string()}")
         return ""
     }
 
@@ -69,6 +76,7 @@ class AACellRoomRepositoryImpl(private val client: OkHttpClient) : AACellRoomRep
     }
 
     companion object {
+        private const val TAG = "AACellRoomRepositoryImpl"
         private const val CODE_OK = 0
         private const val PASSWORD = "password"
         private const val BASE_URL = "https://aacell.me"
