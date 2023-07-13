@@ -68,6 +68,10 @@
             android:exported="true"
             android:screenOrientation="behind" />
         <activity
+            android:name=".activity.ViewPagerActivity"
+            android:exported="true"
+            android:screenOrientation="behind" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
