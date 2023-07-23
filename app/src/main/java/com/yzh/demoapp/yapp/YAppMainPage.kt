@@ -1,4 +1,4 @@
-package com.yzh.demoapp.yapp.main
+package com.yzh.demoapp.yapp
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
