@@ -14,12 +14,14 @@ import com.yzh.demoapp.activity.ValueAnimatorActivity
 import com.yzh.demoapp.activity.ViewPagerActivity
 import com.yzh.demoapp.activity.WeatherActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
+import com.yzh.demoapp.yapp.YAppActivity
 import com.yzh.learnAndroid.card_view.CardViewActivity
 import com.yzh.learnAndroid.recycler_view.RecyclerViewActivity
 
 object DataSource {
 
     private val activityList = listOf(
+        YAppActivity::class,
         ViewPagerActivity::class,
         AACellActivity::class,
         AppListActivity::class,

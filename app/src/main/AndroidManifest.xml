@@ -80,6 +80,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".yapp.YAppActivity"
+            android:exported="true"
+            android:screenOrientation="behind" />
     </application>
 
 </manifest>
