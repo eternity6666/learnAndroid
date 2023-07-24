@@ -1,12 +1,15 @@
 package com.yzh.demoapp.yapp
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
@@ -49,14 +52,12 @@ fun YAppMainPage() {
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .safeContentPadding()
+                .height(120.dp)
                 .background(MaterialTheme.colorScheme.background)
                 .shadow(1.dp),
             contentPadding = PaddingValues(12.dp)
         ) {
             items(yAppSupportList) { route ->
-                val isSelected = currentDestination?.hierarchy?.any() {
-                    it.route == route.routeName
-                } == true
                 Column(
                     modifier = Modifier
                         .padding(8.dp)
@@ -69,11 +70,19 @@ fun YAppMainPage() {
                                 restoreState = true
                             }
                         },
+                    verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
+                    val isSelected = currentDestination?.hierarchy?.any() {
+                        it.route == route.routeName
+                    } == true
+                    val iconSize by animateDpAsState(
+                        targetValue = if (isSelected) 50.dp else 30.dp,
+                        label = "iconSize"
+                    )
                     Box(
                         modifier = Modifier
-                            .size(if (isSelected) 50.dp else 30.dp)
+                            .size(iconSize)
                             .background(
                                 color = route.bgColor,
                                 shape = MaterialTheme.shapes.medium
