@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.yzh.learnAndroid.mockdata.randomString
+import com.yzh.demoapp.mockdata.randomString
 
 data class TestData(
     val name: String,

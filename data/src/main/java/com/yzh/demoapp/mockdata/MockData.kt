@@ -1,7 +1,6 @@
-package com.yzh.learnAndroid.mockdata
+package com.yzh.demoapp.mockdata
 
 import android.graphics.Color
-import java.util.ArrayList
 
 
 val stringList = listOf(

@@ -1,4 +1,4 @@
-package com.yzh.learnAndroid.custom_view
+package com.yzh.demoapp.custom_view
 
 import android.annotation.SuppressLint
 import android.content.Context

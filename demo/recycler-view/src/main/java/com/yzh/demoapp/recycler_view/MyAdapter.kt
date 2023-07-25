@@ -1,9 +1,9 @@
-package com.yzh.learnAndroid.recycler_view
+package com.yzh.demoapp.recycler_view
 
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.yzh.learnAndroid.data.item.DataItem
+import com.yzh.demoapp.data.item.DataItem
 
 class MyAdapter(
     private val dataSet: ArrayList<DataItem>,

@@ -20,8 +20,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yzh.base.extension.PriorityQueue
-import com.yzh.learnAndroid.mockdata.foregroundAndBackgroundColorPairList
-import com.yzh.learnAndroid.mockdata.randomString
+import com.yzh.demoapp.mockdata.foregroundAndBackgroundColorPairList
+import com.yzh.demoapp.mockdata.randomString
 import kotlin.math.max
 
 /**

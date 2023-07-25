@@ -28,7 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.yzh.learnAndroid.card_view'
+    namespace 'com.yzh.demoapp.card_view'
 }
 
 dependencies {

@@ -28,7 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.yzh.learnAndroid.custom_view'
+    namespace 'com.yzh.demoapp.custom_view'
 }
 
 dependencies {

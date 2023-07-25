@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".RecyclerViewActivity"
+            android:name="com.yzh.demoapp.recycler_view.RecyclerViewActivity"
             android:exported="true" />
     </application>
 

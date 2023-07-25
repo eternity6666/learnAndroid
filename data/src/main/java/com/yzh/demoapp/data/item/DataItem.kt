@@ -1,4 +1,4 @@
-package com.yzh.learnAndroid.data.item
+package com.yzh.demoapp.data.item
 
 data class DataItem private constructor(
     val builder: Builder

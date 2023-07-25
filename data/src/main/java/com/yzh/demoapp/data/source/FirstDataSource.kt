@@ -1,6 +1,6 @@
-package com.yzh.learnAndroid.data.source
+package com.yzh.demoapp.data.source
 
-import com.yzh.learnAndroid.data.item.DataItem
+import com.yzh.demoapp.data.item.DataItem
 
 object FirstDataSource {
 

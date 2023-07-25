@@ -28,7 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.yzh.learnAndroid.recycler_view'
+    namespace 'com.yzh.demoapp.recycler_view'
 }
 
 dependencies {

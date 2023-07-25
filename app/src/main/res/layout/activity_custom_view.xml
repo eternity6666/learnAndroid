@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.CustomViewActivity">
 
-    <com.yzh.learnAndroid.custom_view.CustomView
+    <com.yzh.demoapp.custom_view.CustomView
         android:id="@+id/custom_view"
         android:layout_width="@dimen/d80"
         android:layout_height="@dimen/d80"
