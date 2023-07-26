@@ -4,7 +4,7 @@ sealed class LoanType(
     val name: String,
     val calculator: (Double, Double, Int) -> List<Triple<Double, Double, Double>>,
 ) {
-    object SamePrincipalSameInterest : LoanType(
+    data object SamePrincipalSameInterest : LoanType(
         name = "等本等息",
         calculator = { loanAmount, interestRate, numberOfLoad ->
             val totalInterest = loanAmount * interestRate * 0.01 * numberOfLoad / 12
@@ -19,21 +19,21 @@ sealed class LoanType(
         }
     )
 
-    object SameSumOfPrincipalAndInterest : LoanType(
+    data object SameSumOfPrincipalAndInterest : LoanType(
         name = "等额本息",
         calculator = { loanAmount, interestRate, numberOfLoad ->
             emptyList()
         }
     )
 
-    object SamePrincipal : LoanType(
+    data object SamePrincipal : LoanType(
         name = "等额本金",
         calculator = { loanAmount, interestRate, numberOfLoad ->
             emptyList()
         }
     )
 
-    object FirstInterestThenPrincipal : LoanType(
+    data object FirstInterestThenPrincipal : LoanType(
         name = "先息后本",
         calculator = { loanAmount, interestRate, numberOfLoad ->
             emptyList()
