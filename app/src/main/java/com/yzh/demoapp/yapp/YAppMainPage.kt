@@ -32,12 +32,17 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun YAppMainPage() {
-    Box(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
         val navController = rememberNavController()
         NavHost(
             navController = navController,
             startDestination = YAppRoute.Weather.routeName,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
         ) {
             yAppSupportList.forEach { route ->
                 composable(route.routeName) {
@@ -49,10 +54,9 @@ fun YAppMainPage() {
         val currentDestination = navBackStackEntry?.destination
         LazyRow(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .safeContentPadding()
-                .height(120.dp)
+                .height(110.dp)
                 .background(MaterialTheme.colorScheme.background)
                 .shadow(1.dp),
             contentPadding = PaddingValues(12.dp)

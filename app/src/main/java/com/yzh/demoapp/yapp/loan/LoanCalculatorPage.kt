@@ -2,13 +2,14 @@ package com.yzh.demoapp.yapp.loan
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
@@ -40,20 +41,39 @@ fun LoanCalculatorPage() {
     val loanType = remember {
         mutableStateOf(supportLoanTypeList.first())
     }
-    Column(
+    LazyColumn(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top)
     ) {
-        TextField(
-            value = loanAmount.value.toString(),
-            onValueChange = {
-                loanAmount.value = it.toDoubleOrNull() ?: 0.0
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-        LoanTypeSelector(loanTypeState = loanType)
+        item {
+            TextField(
+                value = loanAmount.value.toString(),
+                onValueChange = {
+                    loanAmount.value = it.toDoubleOrNull() ?: 0.0
+                },
+                label = { Text(text = "贷款金额") },
+                modifier = Modifier.fillMaxWidth()
+            )
+            TextField(
+                value = interestRate.value.toString(),
+                onValueChange = {
+                    interestRate.value = it.toDoubleOrNull() ?: 0.0
+                },
+                label = { Text(text = "利率") },
+                modifier = Modifier.fillMaxWidth()
+            )
+            TextField(
+                value = numberOfLoad.value.toString(),
+                onValueChange = {
+                    numberOfLoad.value = it.toIntOrNull()?.takeIf { number -> number > 0 } ?: 0
+                },
+                label = { Text(text = "分期数") },
+                modifier = Modifier.fillMaxWidth()
+            )
+            LoanTypeSelector(loanTypeState = loanType)
+        }
         LoanCalculatorResult(
             loanType = loanType.value,
             loanAmount = loanAmount.value,
@@ -109,8 +129,7 @@ private val supportLoanTypeList = listOf(
     LoanType.FirstInterestThenPrincipal
 )
 
-@Composable
-private fun LoanCalculatorResult(
+private fun LazyListScope.LoanCalculatorResult(
     loanType: LoanType,
     loanAmount: Double,
     interestRate: Double,
@@ -119,25 +138,33 @@ private fun LoanCalculatorResult(
     val result = loanType.calculator(
         loanAmount, interestRate, numberOfLoad
     )
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        if (result.isNotEmpty()) {
-            item {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    LoanTableHeadItem(text = "期数")
-                    LoanTableHeadItem(text = "月供(元)")
-                    LoanTableHeadItem(text = "本金(元)")
-                    LoanTableHeadItem(text = "利息(元)")
-                }
-                Divider()
+    if (result.isNotEmpty()) {
+        item {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                LoanLabelContent(label = "贷款总额", content = "${String.format("%.2f", loanAmount)}元")
+                Spacer(modifier = Modifier.width(16.dp))
+                LoanLabelContent(
+                    label = "利息总额",
+                    content = "${String.format("%.2f", result.sumOf { it.third })}元"
+                )
             }
         }
-        itemsIndexed(result) { index, (principalAndInterest, principal, interest) ->
+        item {
             Row(modifier = Modifier.fillMaxWidth()) {
-                LoanTableContentItem(text = "第${index + 1}期")
-                LoanTableContentItem(text = String.format("%.2f", principalAndInterest))
-                LoanTableContentItem(text = String.format("%.2f", principal))
-                LoanTableContentItem(text = String.format("%.2f", interest))
+                LoanTableHeadItem(text = "期数")
+                LoanTableHeadItem(text = "月供(元)")
+                LoanTableHeadItem(text = "本金(元)")
+                LoanTableHeadItem(text = "利息(元)")
             }
+            Divider()
+        }
+    }
+    itemsIndexed(result) { index, (principalAndInterest, principal, interest) ->
+        Row(modifier = Modifier.fillMaxWidth()) {
+            LoanTableContentItem(text = "第${index + 1}期")
+            LoanTableContentItem(text = String.format("%.2f", principalAndInterest))
+            LoanTableContentItem(text = String.format("%.2f", principal))
+            LoanTableContentItem(text = String.format("%.2f", interest))
         }
     }
 }
@@ -163,4 +190,18 @@ private fun RowScope.LoanTableContentItem(
         textAlign = TextAlign.Center,
         modifier = Modifier.weight(1f),
     )
+}
+
+@Composable
+private fun RowScope.LoanLabelContent(
+    label: String,
+    content: String,
+) {
+    Row(
+        modifier = Modifier.weight(1f),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = label)
+        Text(text = content)
+    }
 }
