@@ -37,10 +37,6 @@
             android:name=".activity.AppListActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FundActivity"
-            android:exported="false"
-            android:label="@string/title_activity_fund" />
-        <activity
             android:name=".activity.GradientDrawableActivity"
             android:exported="true" />
         <activity android:name=".activity.CameraXDemoActivity" />
