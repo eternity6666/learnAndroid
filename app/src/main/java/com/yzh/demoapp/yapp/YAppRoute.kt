@@ -11,8 +11,8 @@ sealed class YAppRoute(
     val name: String = "",
     val bgColor: Color = randomColor()
 ) {
-    object Weather : YAppRoute(page = { YWeatherPage() })
-    object LoanCalculator : YAppRoute(page = { LoanCalculatorPage() })
+    data object Weather : YAppRoute(page = { YWeatherPage() })
+    data object LoanCalculator : YAppRoute(page = { LoanCalculatorPage() })
 
     val routeName: String
         get() = this.javaClass.simpleName

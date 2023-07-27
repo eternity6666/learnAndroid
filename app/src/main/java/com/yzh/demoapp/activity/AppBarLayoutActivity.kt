@@ -169,7 +169,7 @@ class AppBarLayoutActivity : ComponentActivity() {
         }
 
         sealed class Action {
-            class AddLog(val log: String) : Action()
+            data class AddLog(val log: String) : Action()
         }
     }
 

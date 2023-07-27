@@ -17,9 +17,9 @@ private fun WebSocket.stomp(type: StompType, message: String) {
 }
 
 private sealed class StompType(val name: String) {
-    object Connect : StompType("CONNECT")
-    object Begin: StompType("BEGIN")
-    object Subscribe : StompType("SUBSCRIBE")
-    object Commit: StompType("COMMIT")
-    object ACK: StompType("ACK")
+    data object Connect : StompType("CONNECT")
+    data object Begin: StompType("BEGIN")
+    data object Subscribe : StompType("SUBSCRIBE")
+    data object Commit: StompType("COMMIT")
+    data object ACK: StompType("ACK")
 }

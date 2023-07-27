@@ -1,11 +1,11 @@
 package com.yzh.demoapp.aacell.model
 
 sealed class RoomType(val title: String) {
-    object Unknown : RoomType("")
-    object NotFound : RoomType("新的电池舱")
+    data object Unknown : RoomType("")
+    data object NotFound : RoomType("新的电池舱")
     sealed class Found(title: String) : RoomType(title) {
-        object NeedPassword : Found("需要进入密码")
-        object NoPassword : Found("电池舱")
+        data object NeedPassword : Found("需要进入密码")
+        data object NoPassword : Found("电池舱")
     }
 
     companion object {

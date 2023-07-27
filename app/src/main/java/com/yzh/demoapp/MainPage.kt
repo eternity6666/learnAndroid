@@ -31,8 +31,8 @@ private sealed class Screen(
     val route: String,
     @StringRes val resourceId: Int,
 ) {
-    object Home : Screen("home", R.string.home)
-    object Tool : Screen("tool", R.string.tool)
+    data object Home : Screen("home", R.string.home)
+    data object Tool : Screen("tool", R.string.tool)
 }
 
 private val items = listOf(
