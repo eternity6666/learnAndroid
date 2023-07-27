@@ -5,6 +5,7 @@ import com.yzh.demoapp.aacell.AACellActivity
 import com.yzh.demoapp.activity.AppBarLayoutActivity
 import com.yzh.demoapp.activity.AppListActivity
 import com.yzh.demoapp.activity.CameraXDemoActivity
+import com.yzh.demoapp.activity.ColorScaleActivity
 import com.yzh.demoapp.activity.ComposeLearnActivity
 import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.FundActivity
@@ -37,6 +38,7 @@ object DataSource {
         CalculatorActivity::class,
         ComposeLearnActivity::class,
         AppBarLayoutActivity::class,
+        ColorScaleActivity::class,
     )
     private val dataList: ArrayList<MainPageItemData> = ArrayList<MainPageItemData>().apply {
         activityList.forEach { clazz ->
