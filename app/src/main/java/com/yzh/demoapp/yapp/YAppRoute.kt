@@ -3,6 +3,7 @@ package com.yzh.demoapp.yapp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.yzh.demoapp.compose.randomColor
+import com.yzh.demoapp.yapp.drawboard.DrawBoardPage
 import com.yzh.demoapp.yapp.fund.FundPage
 import com.yzh.demoapp.yapp.loan.LoanCalculatorPage
 import com.yzh.demoapp.yapp.weather.YWeatherPage
@@ -15,6 +16,7 @@ sealed class YAppRoute(
     data object Weather : YAppRoute(page = { YWeatherPage() })
     data object LoanCalculator : YAppRoute(page = { LoanCalculatorPage() })
     data object Fund : YAppRoute(page = { FundPage() })
+    data object DrawBoard : YAppRoute(page = { DrawBoardPage() })
 
     val routeName: String
         get() = this.javaClass.simpleName
@@ -23,4 +25,5 @@ sealed class YAppRoute(
 internal val yAppSupportList = listOf(
     YAppRoute.Weather,
     YAppRoute.LoanCalculator,
+    YAppRoute.DrawBoard
 )
