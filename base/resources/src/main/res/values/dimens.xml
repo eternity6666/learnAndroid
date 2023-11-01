@@ -64,6 +64,7 @@
     <dimen name="d64">64dip</dimen>
     <dimen name="d80">80dip</dimen>
     <dimen name="d81">81dip</dimen>
+    <dimen name="d88">88dip</dimen>
     <dimen name="d100">100dip</dimen>
     <dimen name="d128">128dip</dimen>
     <dimen name="d114">114dip</dimen>

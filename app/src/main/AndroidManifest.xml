@@ -29,6 +29,7 @@
             android:name=".DemoAppContentProvider"
             android:authorities="com.yzh.demoapp.providers.demoappcontentprovider"
             android:exported="false" />
+
         <activity
             android:name=".activity.ColorScaleActivity"
             android:exported="true"
@@ -73,6 +74,10 @@
             android:screenOrientation="behind" />
         <activity
             android:name=".activity.ViewPagerActivity"
+            android:exported="true"
+            android:screenOrientation="behind" />
+        <activity
+            android:name=".activity.ViewDemoActivity"
             android:exported="true"
             android:screenOrientation="behind" />
         <activity

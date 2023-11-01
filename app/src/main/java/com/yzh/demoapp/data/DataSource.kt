@@ -11,6 +11,7 @@ import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
+import com.yzh.demoapp.activity.ViewDemoActivity
 import com.yzh.demoapp.activity.ViewPagerActivity
 import com.yzh.demoapp.activity.WeatherActivity
 import com.yzh.demoapp.calculator.CalculatorActivity
@@ -22,6 +23,7 @@ object DataSource {
 
     private val activityList = listOf(
         YAppActivity::class,
+        ViewDemoActivity::class,
         ViewPagerActivity::class,
         AACellActivity::class,
         AppListActivity::class,

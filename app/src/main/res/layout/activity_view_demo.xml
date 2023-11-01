@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="@dimen/d88"
+        android:layout_height="@dimen/d32"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/d32"
+        android:background="@drawable/bg_shape_right_r_20"
+        android:elevation="@dimen/d04"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/creator_subs_bnt_icon"
+            android:layout_width="@dimen/d18"
+            android:layout_height="@dimen/d18"
+            android:src="@drawable/worker_image_1"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/creator_subs_btn_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d06"
+            android:maxLines="1"
+            tools:text="追" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="@dimen/d100"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/button_2"
+        android:layout_width="@dimen/d100"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical" />
+
+</FrameLayout>
