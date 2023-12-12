@@ -37,11 +37,11 @@ class CustomView : View {
         state.mShape = ta.getInt(R.styleable.CustomView_shape, state.mShape)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val width = width
         val height = height
-        canvas?.let {
+        canvas.let {
             drawOutLine(canvas, width.toFloat(), height.toFloat())
             drawCircle(canvas, width.toFloat(), height.toFloat())
         }

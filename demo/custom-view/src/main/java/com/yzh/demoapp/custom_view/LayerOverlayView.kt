@@ -61,9 +61,9 @@ class LayerOverlayView @JvmOverloads constructor(
         requestLayout()
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas?.let {
+        canvas.let {
             targetArea?.let { (circleCenterX, circleCenterY, circleRadius) ->
                 drawCircleAndMaskBackground(it, circleCenterX, circleCenterY, circleRadius)
                 drawFoundPageImage(it, circleCenterX, circleCenterY, circleRadius)
