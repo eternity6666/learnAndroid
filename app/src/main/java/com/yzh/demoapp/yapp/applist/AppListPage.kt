@@ -26,6 +26,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,6 +35,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -94,9 +96,15 @@ fun AppListItem(
     item: PackageInfo,
 ) {
     val packageManager = LocalContext.current.packageManager
+    val bitmap = remember { mutableStateOf<ImageBitmap?>(null) }
+    LaunchedEffect(key1 = "bitmap${item.hashCode()}") {
+        launch(Dispatchers.IO) {
+            bitmap.value = item.applicationInfo?.loadIcon(packageManager)?.toBitmap()?.asImageBitmap()
+        }
+    }
     var showDialog by remember { mutableStateOf(false) }
     if (showDialog) {
-        AppListDialog(item = item, onDismissRequest = { showDialog = false })
+        AppListDialog(item = item, bitmap = bitmap, onDismissRequest = { showDialog = false })
     }
     Card(
         modifier = Modifier
@@ -112,9 +120,8 @@ fun AppListItem(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(8.dp)
         ) {
-            val bitmap = remember { item.applicationInfo?.loadIcon(packageManager)?.toBitmap()?.asImageBitmap() }
             val appName = item.applicationInfo?.loadLabel(packageManager)?.toString().orEmpty()
-            bitmap?.let {
+            bitmap.value?.let {
                 Image(
                     bitmap = it,
                     contentDescription = appName,
@@ -129,16 +136,18 @@ fun AppListItem(
 @Composable
 private fun AppListDialog(
     item: PackageInfo,
+    bitmap: State<ImageBitmap?>,
     onDismissRequest: () -> Unit = {},
 ) {
     Dialog(onDismissRequest = onDismissRequest) {
-        AppListDialogContent(item = item)
+        AppListDialogContent(item = item, bitmap = bitmap)
     }
 }
 
 @Composable
 private fun AppListDialogContent(
     item: PackageInfo,
+    bitmap: State<ImageBitmap?>,
 ) {
     val packageManager = LocalContext.current.packageManager
     Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)) {
@@ -151,10 +160,7 @@ private fun AppListDialogContent(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                val bitmap = remember {
-                    item.applicationInfo?.loadIcon(packageManager)?.toBitmap()?.asImageBitmap()
-                }
-                bitmap?.let {
+                bitmap.value?.let {
                     Image(
                         bitmap = it,
                         contentDescription = item.packageName.orEmpty(),
