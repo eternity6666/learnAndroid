@@ -9,7 +9,7 @@ import android.database.Cursor
 import android.net.Uri
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/7/27 16:16
  */
 class DemoAppContentProvider : ContentProvider() {

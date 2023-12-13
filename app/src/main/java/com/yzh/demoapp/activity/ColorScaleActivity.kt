@@ -33,7 +33,7 @@ import androidx.loader.content.Loader
 
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/7/27 16:16
  */
 class ColorScaleActivity : AppCompatActivity() {

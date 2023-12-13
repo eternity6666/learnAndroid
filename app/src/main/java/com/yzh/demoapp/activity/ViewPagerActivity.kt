@@ -16,7 +16,7 @@ import androidx.viewpager.widget.ViewPager
 import com.yzh.demoapp.R
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/7/12 16:16
  */
 class ViewPagerActivity : AppCompatActivity() {

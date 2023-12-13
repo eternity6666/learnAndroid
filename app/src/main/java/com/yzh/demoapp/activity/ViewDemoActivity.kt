@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.yzh.demoapp.R
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/9/26 16:16
  */
 class ViewDemoActivity : AppCompatActivity() {

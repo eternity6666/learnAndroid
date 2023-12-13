@@ -4,7 +4,7 @@
 package com.yzh.demoapp.base.network
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/6/9 16:16
  */
 data class ResponseData<T>(

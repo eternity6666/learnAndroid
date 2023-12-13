@@ -6,7 +6,7 @@ package com.yzh.demoapp
 import android.app.Application
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/6/8 16:16
  */
 class LearnAndroidApplication : Application() {
