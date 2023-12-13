@@ -89,10 +89,10 @@ class ColorScaleActivity : AppCompatActivity() {
                         val displayNameIndex = it.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)
                         val descriptionIndex = it.getColumnIndex(MediaStore.Images.Media.DESCRIPTION)
                         val dataIndex = it.getColumnIndex(MediaStore.Images.Media.DATA)
-                        it.columnNames.forEach { columnName ->
+                        it.columnNames.forEachIndexed { index, columnName ->
                             Log.i(
                                 TAG,
-                                "query2: name: $columnName, value: ${it.getString(it.getColumnIndex(columnName))}"
+                                "query2: name: $columnName, value: ${it.getString(index)}"
                             )
                         }
                         val pictureData = PictureData(
