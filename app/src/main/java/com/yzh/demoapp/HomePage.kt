@@ -1,6 +1,3 @@
-/*
- * CopyRight (C) 2023 Tencent. All rights reserved.
- */
 package com.yzh.demoapp
 
 import androidx.compose.animation.AnimatedVisibility
@@ -36,9 +33,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yzh.base.extension.jumpTo
 import com.yzh.demoapp.data.DataSource
 import com.yzh.demoapp.data.MainPageItemData
-import com.yzh.base.extension.jumpTo
 
 @Preview
 @Composable

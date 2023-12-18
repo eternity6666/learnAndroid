@@ -1,6 +1,3 @@
-/*
- * CopyRight (C) 2023 Tencent. All rights reserved.
- */
 package com.yzh.demoapp.yapp.applist
 
 import android.content.pm.PackageInfo
