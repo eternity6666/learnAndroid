@@ -70,7 +70,11 @@ fun AddWalletItem(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
     ) {
-        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 20.dp)) {
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .padding(vertical = 20.dp)
+        ) {
             TextField(value = name, onValueChange = { name = it })
             Switch(checked = type == WalletType.Asset, onCheckedChange = {
                 type = if (it) WalletType.Asset else WalletType.Debt
