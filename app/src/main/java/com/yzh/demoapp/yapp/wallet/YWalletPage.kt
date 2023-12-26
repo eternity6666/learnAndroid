@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -43,7 +44,7 @@ fun YWalletPage() {
             )
         }
     ) {
-        Text(text = "123")
+        YWalletContent(viewModel = viewModel)
         if (showBottomSheet) {
             AddWalletItem(viewModel = viewModel) {
                 showBottomSheet = false
@@ -52,9 +53,15 @@ fun YWalletPage() {
     }
 }
 
+@Composable
+private fun YWalletContent(
+    viewModel: YWalletViewModel,
+) {
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddWalletItem(
+private fun AddWalletItem(
     viewModel: YWalletViewModel,
     onDismiss: () -> Unit,
 ) {
@@ -82,7 +89,9 @@ fun AddWalletItem(
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    viewModel.addItem(WalletItem(name, dataList, type))
+                    viewModel.dispatchAction(
+                        YWalletAction.AddItem(WalletItem(name, dataList, type))
+                    )
                     onDismiss()
                 },
             ) {
@@ -90,4 +99,10 @@ fun AddWalletItem(
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun YWalletPage_Previews() {
+    YWalletPage()
 }
