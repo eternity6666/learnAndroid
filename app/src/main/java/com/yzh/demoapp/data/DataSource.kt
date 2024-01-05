@@ -7,6 +7,7 @@ import com.yzh.demoapp.activity.AppListActivity
 import com.yzh.demoapp.activity.CameraXDemoActivity
 import com.yzh.demoapp.activity.ColorScaleActivity
 import com.yzh.demoapp.activity.ComposeLearnActivity
+import com.yzh.demoapp.activity.ConfigurationChangeMainActivity
 import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
@@ -22,6 +23,7 @@ import com.yzh.demoapp.yapp.YAppActivity
 object DataSource {
 
     private val activityList = listOf(
+        ConfigurationChangeMainActivity::class,
         YAppActivity::class,
         ViewDemoActivity::class,
         ViewPagerActivity::class,
