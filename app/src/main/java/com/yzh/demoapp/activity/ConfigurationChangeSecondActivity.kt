@@ -11,7 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2024/1/4 16:16
  */
 class ConfigurationChangeSecondActivity : AppCompatActivity() {

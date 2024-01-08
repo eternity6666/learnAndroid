@@ -17,7 +17,7 @@ import com.yzh.annotation.YActivity
 import com.yzh.demoapp.compose.TAG
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2024/1/4 16:16
  */
 @YActivity(title = "测试 onConfigurationChange")

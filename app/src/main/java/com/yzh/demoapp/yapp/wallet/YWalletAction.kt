@@ -6,7 +6,7 @@ package com.yzh.demoapp.yapp.wallet
 import java.util.UUID
 
 /**
- * @author baronyang@tencent.com
+ * @author eternity6666@qq.com
  * @since 2023/12/26 16:16
  */
 sealed class YWalletAction {
