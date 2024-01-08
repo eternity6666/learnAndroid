@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -204,4 +205,10 @@ private fun RowScope.LoanLabelContent(
         Text(text = label)
         Text(text = content)
     }
+}
+
+@Preview
+@Composable
+private fun LoanCalculatorPage_Preview() {
+    LoanCalculatorPage()
 }

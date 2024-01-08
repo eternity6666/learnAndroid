@@ -29,7 +29,7 @@ sealed class LoanType(
             val result = mutableListOf<Triple<Double, Double, Double>>()
             if (numberOfLoad > 0) {
                 val interestMonthRate = interestYearRate * 0.01 / 12
-                var remainingLoanAmount= loanAmount
+                var remainingLoanAmount = loanAmount
                 for (i in 1..numberOfLoad) {
                     val onePlusRatePowN = (1 + interestMonthRate).pow(numberOfLoad)
                     val total = loanAmount * (interestMonthRate * onePlusRatePowN) / (onePlusRatePowN - 1)
@@ -51,7 +51,8 @@ sealed class LoanType(
                 val interestMonthRate = interestYearRate * 0.01 / 12
                 for (i in 1..numberOfLoad) {
                     val principal = loanAmount / numberOfLoad
-                    val interest = loanAmount * (numberOfLoad - i + 1) * interestMonthRate / numberOfLoad
+                    val interest =
+                        loanAmount * (numberOfLoad - i + 1) * interestMonthRate / numberOfLoad
                     result.add(Triple(principal + interest, principal, interest))
                 }
             }
