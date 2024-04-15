@@ -2,7 +2,7 @@
 androidGradlePlugin = "8.2.0"
 buildToolsVersion = "30.0.3"
 compileSdk = "34"
-minSdk = "24"
+minSdk = "26"
 targetSdk = "34"
 composeVersion = "1.5.4"
 activityVersion = "1.8.2"
@@ -17,6 +17,7 @@ okhttp3Version = "4.11.0"
 protobuf = "3.21.12"
 protobufPlugin = "0.8.19"
 secrets = "2.0.1"
+ksoupVersion="0.3.1"
 
 [libraries]
 material = { module = "com.google.android.material:material", version = "1.11.0" }
@@ -61,7 +62,7 @@ okhttp = { module = "com.squareup.okhttp3:okhttp", name = "okhttp", version.ref 
 retrofit = { module = "com.squareup.retrofit2:retrofit", version = "2.9.0" }
 converterGson = { module = "com.squareup.retrofit2:converter-gson", version = "2.9.0" }
 coil = { module = "io.coil-kt:coil", version = "2.4.0" }
-
+jsoup = { module = "org.jsoup:jsoup", version = "1.17.2" }
 # test
 junit = { module = "junit:junit", version = "4.13.2" }
 espressoCore = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
