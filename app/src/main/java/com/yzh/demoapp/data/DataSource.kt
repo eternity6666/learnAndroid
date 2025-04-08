@@ -11,6 +11,7 @@ import com.yzh.demoapp.activity.ConfigurationChangeMainActivity
 import com.yzh.demoapp.activity.CustomViewActivity
 import com.yzh.demoapp.activity.GradientDrawableActivity
 import com.yzh.demoapp.activity.OrientationActivity
+import com.yzh.demoapp.activity.RecyclerViewRemoveActivity
 import com.yzh.demoapp.activity.ValueAnimatorActivity
 import com.yzh.demoapp.activity.ViewDemoActivity
 import com.yzh.demoapp.activity.ViewPagerActivity
@@ -24,6 +25,7 @@ object DataSource {
 
     private val activityList = listOf(
         ConfigurationChangeMainActivity::class,
+        RecyclerViewRemoveActivity::class,
         YAppActivity::class,
         ViewDemoActivity::class,
         ViewPagerActivity::class,

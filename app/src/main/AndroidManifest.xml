@@ -65,6 +65,10 @@
             android:exported="true"
             android:screenOrientation="behind" />
         <activity
+            android:name=".activity.RecyclerViewRemoveActivity"
+            android:exported="true"
+            android:screenOrientation="behind" />
+        <activity
             android:name=".activity.ComposeLearnActivity"
             android:exported="true"
             android:screenOrientation="behind" />
